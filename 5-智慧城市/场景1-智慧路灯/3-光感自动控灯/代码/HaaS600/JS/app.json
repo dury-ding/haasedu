@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "io": {
+        "D5": {
+            "type": "GPIO",
+            "port": 5,
+            "dir": "output",
+            "pull": "pulldown"
+        },
+        "ADC0": {
+            "type": "ADC",
+            "port": 0,
+            "sampling": 12000000
+        }
+    },
+    "debugLevel": "INFO",
+    "repl": "disable"
+}

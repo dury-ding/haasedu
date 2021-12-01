@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "io": {
+        "USER_LED": {
+            "type": "GPIO",
+            "port": 33,
+            "dir": "output",
+            "pull": "pulldown"
+        },
+        "D4": {
+            "type": "GPIO",
+            "port": 4,
+            "dir": "input",
+            "pull": "pulldown"
+        }
+    },
+    "debugLevel": "DEBUG"
+}

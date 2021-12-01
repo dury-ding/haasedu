@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "io": {
+        "ADC0": {
+            "type": "ADC",
+            "port": 0,
+            "sampling": 12000000
+        },
+        "RED_LED": {
+            "type": "GPIO",
+            "port": 32,
+            "dir": "output",
+            "pull": "pullup"
+       }
+    }, 
+    "debugLevel": "DEBUG"
+}

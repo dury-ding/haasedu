@@ -1,0 +1,209 @@
+> **学习物联网，来HaaSEDU就对了**
+
+# 车辆定位系统 —— 定位数据上云
+&emsp;&emsp;
+在[车辆定位系统 —— 获取定位数据](../1-获取定位数据/README.md)课程中完成设备端获取定位数据的基础上，本节将讲解如何将定位数据上报至物联网平台。整个过程包含以下6个步骤：
+
+1. [开通公共实例](./README.md "开通公共实例")
+2. [创建产品（设备模型）](./README.md "创建产品（设备模型）")
+3. [定义产品功能（物模型）](./README.md "定义产品功能（物模型）")
+4. [创建设备及获取三元组](./README.md "创建设备及获取三元组")
+5. [设备端配置](./README.md "设备端配置")
+6. [在物联网平台上查看设备数据](./README.md "在物联网平台上查看设备数据")
+
+<br>
+
+## 开通公共实例
+&emsp;&emsp;
+对于第一次使用物联网平台的读者，需要开通实例以使用物联网平台的功能。这里可以使用免费的公共实例进行开发。
+
+&emsp;&emsp;
+在[物联网平台(https://iot.console.aliyun.com/lk/summary/new)](https://iot.console.aliyun.com/lk/summary/new)中，左上角选择“华东2-上海”，点击“公共实例”，即可开通。开通后点击“公共实例”，即可进入[控制台](https://iot.console.aliyun.com/lk/summary/new)进行产品创建。
+
+<div align="center">
+<img src=./../../../图片/5_3_开通公共实例.png
+ width=100%/>
+</div>
+
+## 创建产品（设备模型）
+&emsp;&emsp;
+进入[公共实例控制台](https://iot.console.aliyun.com/lk/summary/new)，点击“创建产品”按钮，即可进入[新建产品页面](https://iot.console.aliyun.com/product)。
+<div align="center">
+<img src=./../../../图片/5_3_公共实例控制台.png
+ width=100%/>
+</div>
+
+&emsp;&emsp;
+进入[新建产品页面](https://iot.console.aliyun.com/product)，设定“产品名称”，这里我们命名为“**车辆定位器**”，读者也可以根据自己的喜好来命名。
+
+&emsp;&emsp;
+在“所属品类”中，选择“标准品类”。“标准品类”收录了一些常用的设备模型，其会为我们定义好后续的产品功能（物模型）。我们也可以选择“自定义品类”，来自己定义物模型。在右侧栏中搜索并选择“定位器”。
+
+<div align="center">
+<img src=./../../../图片/5_3_创建标准品类产品.png
+ width=100%/>
+</div>
+
+&emsp;&emsp;
+产品的节点类型选择“直连设备”，数据格式选择“ICA标准数据格式”，检验类型和认证方式选择默认设定即可。开发者可根据自己的需求在“产品描述”页面添加针对此产品的描述。
+
+&emsp;&emsp;
+对于 HaaS EDU K1 等搭载 Wi-Fi 的设备而言，联网方式可以选择“Wi-Fi”。
+
+<div align="center">
+    <img src=./../../../图片/5_3_创建WIFI产品.png
+    width=40%/>
+</div>
+
+&emsp;&emsp;
+对于 HaaS600 等4G Cat1设备而言，联网方式可以选择“蜂窝”。
+<div align="center">
+    <img src=./../../../图片/5_3_创建蜂窝产品.png
+    width=42%/>
+</div>
+
+&emsp;&emsp;
+选择之后，点击“确认”按钮，即可完成产品创建。返回“产品”页面之后可以看到产品类表中会出现刚刚创建的“车辆定位器”的产品，如下图所示。
+
+<div align="center">
+<img src=./../../../图片/5_3_产品列表车辆定位器.png width=100%/>
+</div>
+<br>
+
+## 定义产品功能（物模型）
+&emsp;&emsp;
+点击上图中的“查看”按钮，即可看到产品信息，Topic列表，功能定义，数据解析等跟产品相关功能的设定。点开“功能定义”标签页，可以看到设备物模型定义。
+
+<div align="center">
+<img src=./../../../图片/5_3_车辆定位器产品详情.png width=100%/>
+</div>
+
+&emsp;&emsp;
+因为在创建产品的过程中选择了标准的产品品类，这里会出现标准品类中自带的物模型设定，即“地理位置”。点击“查看”，我们可以看到该属性的详情。可以看到，该属性的数据类型是一个结构体(struct),其成员描述了设备的精度（浮点）、维度（浮点）、海拔（浮点）、坐标系统（枚举量，1：WGS_84/2:GCJ_02）
+
+<div align="center">
+<img src=./../../../图片/5_3_属性详情.png width=100%/>
+</div>
+
+&emsp;&emsp;
+产品对应的物描述语言(Thing Specification Language, TSL)如下。在[创建产品（设备模型）](./README.md "创建产品（设备模型）")步骤中选择“**自定义品类**“的读者，也可以导入此TSL文件来创建相同的物模型。详情请参考[物联网平台](../../../拓展知识/物联网平台/README.md)中的内容。
+
+```
+{
+  "properties": [
+    {
+      "identifier": "GeoLocation",
+      "dataType": {
+        "type": "struct",
+        "specs": [
+          {
+            "identifier": "Longitude",
+            "dataType": {
+              "type": "double"
+            }
+          },
+          {
+            "identifier": "Latitude",
+            "dataType": {
+              "type": "double"
+            }
+          },
+          {
+            "identifier": "Altitude",
+            "dataType": {
+              "type": "double"
+            }
+          },
+          {
+            "identifier": "CoordinateSystem",
+            "dataType": {
+              "type": "enum"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+&emsp;&emsp;
+定义好物模型后，记得点击“发布”以使变更生效。
+<div align="center">
+<img src=./../../../图片/5_3_发布物模型.png width=100%/>
+</div>
+
+&emsp;&emsp;
+产品及其物模型创建完成后就可以创建这个产品的设备了。
+
+<br>
+
+## 创建设备及获取三元组
+&emsp;&emsp;
+点击左侧栏中“产品“，回到产品列表。在产品列表页面中，点击“管理设备”，就会进到设备管理页面。
+
+<div align="center">
+<img src=./../../../图片/5_3_产品列表管理设备.png width=100%/>
+</div>
+
+&emsp;&emsp;
+在“设备”页面点击“批量添加”按钮，如下图所示。填入需要生成的设备数量。例如图中物联网平台会为我们生成3台设备，以及随机的deviceName。
+<div align="center">
+<img src=./../../../图片/5_3_批量添加.png width=100%/>
+</div>
+
+&emsp;&emsp;
+批量生成的设备如下
+<div align="center">
+<img src=./../../../图片/5_3_设备列表.png width=100%/>
+</div>
+
+&emsp;&emsp;
+设备添加完成后，点击“前往查看”按钮，就可以看到此设备的详细信息了。
+<div align="center">
+<img src=./../../../图片/5_3_设备端详细信息.png width=100%/>
+</div>
+
+<br>
+
+### 获取设备三元组
+&emsp;&emsp;
+如下图所示，点击“查看”按钮，就可以看到设备的三元组信息，三元组是物联网设备端和物联网云端设备相关联的唯一标识符，在设备端连接云端的时候会使用三元组信息和云端进行鉴权，鉴权通过之后云端会认为设备已激活并上线。
+
+<div align="center">
+<img src=./../../../图片/5_3_三元组信息.png width=100%/>
+</div>
+
+<br>
+
+## 设备端配置
+&emsp;&emsp;
+完成了云端的配置，接下来我们需要将设备端获取到的定位信息上报到我们刚刚创建的云端设备上。
+
+&emsp;&emsp;
+本节课程同样有两个硬件平台可以选择，请读者根据自己所选硬件按需选择学习下面物联网设备端配置的文档中的内容。
+
+* [HaaS600](./HaaS600_定位数据上云.md)
+* [ESP32](./ESP32_定位数据上云.md)
+
+<br>
+
+## 在物联网平台上查看设备数据
+&emsp;&emsp;
+当设备启动成功并第一次连接到物联网平台之后，物联网平台上对应的设备状态会从”未激活状态“变为”上线“。点击“物模型数据”标签页，能够看到设备上报到物联网平台的属性值。
+
+<div align="center">
+    <img src=./../../../图片/5_3_LP显示定位数据.png width=100%/>
+</div>
+
+&emsp;&emsp;
+点击卡片上的“查看数据”，可以看到完整的历史数据。
+<div align="center">
+    <img src=./../../../图片/5_3_LP显示定位数据详情.png width=100%/>
+</div>
+
+&emsp;&emsp;
+此时，如果设备上报新的地理位置信息，则物联网平台上能够实时显示。至此，定位数据上云完成。
+
+<br>
+
