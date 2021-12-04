@@ -52,7 +52,7 @@
 1. **修改设备端上报温湿度信息所用标识符**
 
 temperature工程里app.js中下面的代码实现的是上传温湿度值到云端的功能。其中CurrentTemperature便是温度值上报时所用的标识符。
-```
+```python
    // 上报数据到云端
    iotdev.postProps(
        JSON.stringify({
@@ -74,7 +74,7 @@ temperature工程里app.js中下面的代码实现的是上传温湿度值到云
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会周期性的打印如下日志。其中“lm75 data is xx.yyy”中的xxx为LM75温度传感器测量到的温度值，“{"CurrentTemperature":xx.yyy}”则为HaaS600上传到云端的温度属性值。
 
-```
+```log
 lm75 data is 31.125
 reporting {"CurrentTemperature":31.125} to cloud
 lm75 data is 31

@@ -28,7 +28,7 @@
 1. **修改设备端上报数据所用标识符**
 
 fire_detector工程里app.js中下面的代码实现的是上传燃气检测结果和报警灯状态到云端的功能。其中fireVoltate便是燃气检测结果上报云端所用的标识符。
-```
+```python
    // 上报数据到云端
    iotdev.postProps(
        JSON.stringify({
@@ -56,7 +56,7 @@ JS脚本运行之后，系统会周期性的读取火焰传感器的测量结果
 *  “fireVoltage：yyy”：yyy则为实际ADC输入的电压值，单位：mV
 *  “alarmOn: x”：x为报警灯的状态
 
-```
+```python
 <D>[ADC](93) adc value: 1299
 
 fireVoltage: 2598

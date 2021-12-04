@@ -12,7 +12,7 @@
 ## 代码编辑及讲解
 
 &emsp;&emsp;
-本节课程是在[火焰亮度检测及报警灯控制](../1-火焰亮度检测及报警灯控制/README.md)的基础上进行开发，设备端的工程无需再创建，只需要将[main.py](./代码/ESP32/Python/main.py)脚本的代码复制后覆盖fire_detector工程根目录下的main.py里边的内容后需要完成以下三处代码修改。
+本节课程是在[火焰亮度检测及报警灯控制](./../1-火焰亮度检测及报警灯控制/ESP32_火焰亮度测量.md)的基础上进行开发，设备端的工程无需再创建，只需要将[main.py](./代码/ESP32/Python/main.py)脚本的代码复制后覆盖fire_detector工程根目录下的main.py里边的内容后需要完成以下三处代码修改。
 > Python脚本的详细说明请参考脚本内嵌的文字版注释
 
 1. **修改路由器名称及密码**   
@@ -20,7 +20,7 @@
 &emsp;&emsp;
 修改fire_detector工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # Wi-Fi SSID和Password设置
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"
@@ -32,7 +32,7 @@ wifiPassword = "请填写您的路由器密码"
 2. **修改设备端三元组**
 
 &emsp;&emsp;
-修改humiture工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
+修改fire_detector工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
 
 <div align="center">
 <img src=./../../../图片/4_火焰监控系统_修改设备端三元组信息_esp32.jpg
@@ -42,8 +42,8 @@ wifiPassword = "请填写您的路由器密码"
 1. **修改设备端上报数据所用标识符**
 
 &emsp;&emsp;
-fire_detector工程里main.py中下面的代码实现的是上传火焰检测结果和报警灯状态到云端的功能。其中gasVoltate便是火焰检测结果上报云端所用的标识符。
-```
+fire_detector工程里main.py中下面的代码实现的是上传火焰检测结果和报警灯状态到云端的功能。其中fireVoltage便是火焰检测结果上报云端所用的标识符。
+```python
 # 无限循环
 while True:
     # 获取电压值
@@ -74,7 +74,7 @@ while True:
 &emsp;&emsp;
 Python脚本推送到ESP32之后 ，会自动运行，运行过程中日志如下。其中：
 
-```
+```python
 mount fs
  ==== python file check /data/pyamp/main.py ====
  ==== main.py update time = 691102560 ====
@@ -122,6 +122,6 @@ The fire status Voltage  1100
 
 <br>
 
-> 关于ESP32的详细信息请参考[ESP32开发板介绍](../../../拓展知识/HaaS硬件积木库/ESP32开发板/ESP32.md)。
+> 关于ESP32的详细信息请参考[ESP32开发板介绍](./../../../拓展知识/HaaS硬件积木库/ESP32开发板/README.md)。
 
 <br>

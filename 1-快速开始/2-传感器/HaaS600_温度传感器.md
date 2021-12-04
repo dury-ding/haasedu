@@ -42,7 +42,7 @@
 
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会周期性的打印如下日志，其中“lm75 data is xxx”后面的xxx即为LM75温度传感器测量到的温度值，单位：摄氏度。
-```
+```log
 lm75 data is 29.625
 lm75 data is 29.5
 lm75 data is 29.625

@@ -24,7 +24,7 @@
 &emsp;&emsp;
 helloworld工程中脚本（app.js）内容如下，功能为周期性的打印“Hello World, time: xxx”，其中xxx为系统时间，单位为ms。
 
-```
+```js
 console.log('hello amp!');
 
 setInterval(function () {
@@ -44,7 +44,7 @@ setInterval(function () {
 &emsp;&emsp;
 推送此脚本到HaaS600之后，设备会自动重启设备。系统启动后，打开设备端的串口工具，可以看到设备会周期性的打印如下日志。
 
-```
+```log
 ...
 Hello World, time: 26800
 Hello World, time: 27800

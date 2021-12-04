@@ -40,7 +40,7 @@
 
 &emsp;&emsp;
 推送此脚本到HaaS EDU K1之后，串口会周期性的打印如下日志。
-```
+```log
 ...
 si7006 version is: 32
 The temperature is: 52.1

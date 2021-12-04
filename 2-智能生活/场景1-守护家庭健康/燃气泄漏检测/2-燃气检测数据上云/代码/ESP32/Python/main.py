@@ -11,7 +11,7 @@ from aliyunIoT import Device  # iot组件是连接阿里云物联网平台的组
 import network                # Wi-Fi功能所在库
 import utime                   # 延时API所在组件
 import ujson                  # json字串解析库
-from driver import GPIO       # HaaS EDU K1 LED使用GPIO进行控制
+from driver import GPIO       # 开发板 LED使用GPIO进行控制
 from driver import ADC        # ADC类，通过微处理器的ADC模块读取ADC通道输入电压
 import mq2                    # 引入MQ2传感器驱动库
 import ujson                  # json库
@@ -66,20 +66,18 @@ def get_wifi_status():
 # 设置props 事件接收函数（当云平台向设备下发属性时）
 def on_props(request):
     global alarmOn
-    print(request)
+    # print(request)
     # {"alarmLight":1} or {"alarmLight":0}
-    data = ujson.dumps(request)
-    payload = ujson.loads(data)
+    payload = ujson.loads(request['params'])
 
     # 获取dict状态字段 注意要验证键存在 否则会抛出异常
     if "alarmLight" in payload.keys():
+        print(payload)
         alarmOn = payload["alarmLight"]
         if (alarmOn):
             print("开始报警")
         else:
             print("结束报警")
-
-    print(alarmOn)
 
     # 根据云端设置的报警灯状态改变本地LED状态
     led_control(alarmOn)
@@ -155,6 +153,7 @@ def upload_gas_detector_state():
         # 生成上报到物联网平台的属性值字串，此处的属性标识符"gasVoltage"和"alarmLight"必须和物联网平台的属性一致
         # "gasVoltage" - 代表燃气传感器测量到的电压值
         # "alarmLight" - 代表报警灯的当前状态
+        print('reporting data to cloud:', data)
         uploadData = {'params': data}
         # 上传温度和湿度信息到物联网平台
 

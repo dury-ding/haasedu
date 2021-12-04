@@ -34,7 +34,7 @@ AHT21B对象成功，返回AHT21B对象；AHT21B对象创建失败，抛出Excep
 
 * 示例代码：
 
-```Python
+```python
 from driver import I2C               # 驱动库
 import aht21b                        # AHT21B温湿度传感器驱动库
 
@@ -47,7 +47,7 @@ humitureDev = aht21b.AHT21B(i2cObj)  # 初始化AHT21B传感器
 ```
 
 * 输出：
-```
+```log
 aht21b inited!
 ```
 
@@ -67,7 +67,7 @@ aht21b inited!
 
 * 示例：
 
-```Python
+```python
 from driver import I2C               # 驱动库
 import aht21b                        # AHT21B温湿度传感器驱动库
 
@@ -83,7 +83,7 @@ print("temperature is ", temp, "°C")
 ```
 
 * 输出：
-```
+```log
 temperature is 25.3°C
 ```
 
@@ -103,7 +103,7 @@ temperature is 25.3°C
 
 * 示例：
 
-```Python
+```python
 from driver import I2C               # 驱动库
 import aht21b                        # AHT21B温湿度传感器驱动库
 
@@ -119,7 +119,7 @@ print("humidity is ", humi, "%H")
 ```
 
 * 输出：
-```
+```log
 humidity is 60%H
 ```
 
@@ -139,7 +139,7 @@ humidity is 60%H
 
 * 示例：
 
-```Python
+```python
 from driver import I2C               # 驱动库
 import aht21b                        # AHT21B温湿度传感器驱动库
 
@@ -155,7 +155,7 @@ print("humidity is ", data[1], "%H")
 ```
 
 * 输出：
-```
+```log
 temperature is 25.3°C
 humidity is 60%H
 ```
@@ -164,7 +164,7 @@ humidity is 60%H
 此使用实例在board.json中定义了名为aht21b的I2C类型的对象。在Python脚本中周期性的获取温湿度测量结果并打印在日志中。
 
 * 代码：
-```Python
+```python
 # board.json配置：
 {
     "name": "board-name",
@@ -184,7 +184,7 @@ humidity is 60%H
 }
 
 ```
-```Python
+```python
 # Python代码
 import utime                         # 延时API所在组件
 from driver import I2C               # 驱动库
@@ -221,7 +221,7 @@ if __name__ == '__main__':
 ```
 
 * 输出：
-```Python
+```python
 ...
 The temperature is 25.3°C
 The humidity is 60%H

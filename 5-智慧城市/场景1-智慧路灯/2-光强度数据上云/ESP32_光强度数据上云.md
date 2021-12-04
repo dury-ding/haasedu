@@ -76,23 +76,23 @@
 </div>
 
 &emsp;&emsp;
-如下图设置对应产品的物模型，分别设置光强度和灯开关两个模型，
+如下图设置对应产品的物模型，设置光强度电压值的物模型，
 <div align="center">
-<img src=./../../../图片/5_1_产品物模型.jpg
+<img src=./../../../图片/5_1_2产品物模型.jpg
  width=40%/>
 </div>
 
 &emsp;&emsp;
-在产品详情中增加产品的功能，可以看到刚才设置的光强度和开关两个功能属性，点击发布上线。
+在产品详情中增加产品的功能，可以看到刚才设置的光强度电压值物模型属性，点击发布上线。
 <div align="center">
-<img src=./../../../图片/5_1_完成物模型设置.jpg
+<img src=./../../../图片/5_1_2完成物模型设置.jpg
  width=40%/>
 </div>
 
 &emsp;&emsp;
 这样，整个智慧路灯产品在物联网平台就创建好了。
 
-3. **设备管理**
+1. **设备管理**
 
 &emsp;&emsp;
 选中最左边栏设备管理中的设备，然后添加设备，
@@ -125,14 +125,14 @@
 ### 设备端代码
 
 &emsp;&emsp;
-本节课程是在[光照传感器检测](../1-光照传感器检测/README.md)的基础上进行开发，设备端的工程无需再创建，只需要将[main.py](./代码/HaaS_EDU_K1/Python/main.py)脚本的代码复制后覆盖light_smart工程根目录下的main.py里边的内容后需要完成以下三处代码修改。
+本节课程是在[光照传感器检测](../1-光照传感器检测/ESP32_光照传感器检测.md)的基础上进行开发，设备端的工程无需再创建，只需要将[main.py](./代码/ESP32/Python/main.py)脚本的代码复制后覆盖light_smart工程根目录下的main.py里边的内容后需要完成以下三处代码修改。
 
 1. **修改路由器名称及密码**   
 
 &emsp;&emsp;
 修改light_smart工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # wifi连接的的ssid和pwd定义
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"
@@ -151,7 +151,7 @@ wifiPassword = "请填写您的路由器密码"
  width=40%/>
 </div>
 
-```
+```python
 # 物联网平台相关的key和serect定义
 productKey     = "产品key"
 deviceName     = "设备名称"
@@ -163,7 +163,7 @@ deviceSecret   = "设备密钥"
 &emsp;&emsp;
 light_smart工程里main.py中下面的代码实现的是上传光强度值到云端的功能，其中Brightness便是光强度值上报时所用的标识符。
 
-```
+```python
 def report_light_data(l_data):
     # 生成上报到物联网平台的属性值字串
     upload_data = {'params': ujson.dumps({
@@ -177,8 +177,8 @@ def report_light_data(l_data):
 &emsp;&emsp;
 确保Brightness标识符和物联网产品的物模型中属性标识符是一样的，如下图所示：
 <div align="center">
-<img src=./../../../图片/5_1_完成物模型设置.jpg
- width=40%/>
+<img src=./../../../图片/5_1_2完成物模型设置.jpg
+ width=70%/>
 </div>
 
 <br>
@@ -188,7 +188,7 @@ def report_light_data(l_data):
 &emsp;&emsp;
 推送此脚本到ESP32之后，在设备上通过OLED显示亮度值，同时将相关的光强度值上传到云端，如下日志所示：
 
-```
+```python
 >>> execfile("/data/pyamp/main.py")
 wifi_connected: False
 wifi_connected: False

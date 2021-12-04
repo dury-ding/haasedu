@@ -95,7 +95,7 @@ HT2828Z3G5L是一款高性能的面向车载组合导航领域的定位G-MOUSE�
 > Gnss对象成功，返回Gnss对象；Gnss对象创建失败，抛出Exception
 
 * 示例代码
-```Python
+```python
 import gnss
 from driver import UART
 
@@ -108,7 +108,7 @@ gnssDev = gnss.Gnss(uartDev)
 ```
 
 * 输出
-```Python
+```python
 Testing gnss ...
 ```
 </br>
@@ -133,7 +133,7 @@ Testing gnss ...
 
 * 示例：
 
-```Python
+```python
 import gnss
 from driver import UART
 
@@ -149,7 +149,7 @@ print("The gnss infor 纬度-%d 经度-%d 海拔-%d",location.longitude, locatio
 ```
 
 * 输出
-```Python
+```python
 Testing gnss ...
 The gnss infor 纬度-%d 经度-%d 海拔-%d
 ```
@@ -161,7 +161,7 @@ The gnss infor 纬度-%d 经度-%d 海拔-%d
 此使用实例在board.json中定义了名为DCMotor的GPIO类型的对象。在Python脚本中执行一次开始转动和停止转动的动作并打印在日志中。
 
 * 案例代码
-```Python
+```python
 {
     "name": "board-name",
     "version": "1.0.0",
@@ -179,7 +179,7 @@ The gnss infor 纬度-%d 经度-%d 海拔-%d
 }
 ```
 
-```Python
+```python
 import gnss
 from driver import UART
 
@@ -195,7 +195,7 @@ print("The gnss infor 纬度-%d 经度-%d 海拔-%d",location.longitude, locatio
 ```
 
 * 输出
-```Python
+```python
 Testing gnss ...
 The gnss infor 纬度-%d 经度-%d 海拔-%d
 ```

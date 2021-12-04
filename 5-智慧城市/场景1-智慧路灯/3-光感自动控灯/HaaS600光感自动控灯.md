@@ -180,7 +180,7 @@
  width=40%/>
 </div>
 
-```
+```python
 # 物联网平台相关的key和serect定义
 const productKey = '产品密钥';     //请输入您的pk
 const deviceName = '设备名称';    //请输入您的dn
@@ -192,7 +192,7 @@ const deviceSecret = '设备密钥';   //请输入您的ds
 &emsp;&emsp;
 light_smart工程里app.js中下面的代码实现的是上传光强度值到云端的功能，以及云端下发对应的开关命令。其中Brightness便是光强度值上报时所用的标识符，onoff为云端下发的开关标识符。
 
-```
+```python
  // 每5秒钟上报温湿度数据
  setInterval(function () {
   var lightness = light_adc.adc_readValue(lightObj);
@@ -207,7 +207,7 @@ light_smart工程里app.js中下面的代码实现的是上传光强度值到云
  }, 5000);
 ```
 
-```
+```python
  // 云端收到上报下发的消息
  iotdev.onProps(function(properity) {
     console.log('received cloud properity param ' + properity.params);

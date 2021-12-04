@@ -25,7 +25,7 @@
 &emsp;&emsp;
 helloworld工程中脚本（main.py）内容如下：
 
-```
+```python
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 '''
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 &emsp;&emsp;
 推送此脚本到ESP32之后，HaaS Studio会自动打开串口工具，并自动执行main.py脚本，此时可以看到设备会周期性的打印如下日志。
 
-```
+```log
 ...
 helloworld
 helloworld

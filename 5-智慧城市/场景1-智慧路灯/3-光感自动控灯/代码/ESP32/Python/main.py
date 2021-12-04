@@ -118,10 +118,8 @@ def on_connect(data):
 # 设置props 事件接收函数（当云平台向设备下发属性时）
 def on_props(request):
     global alarm_on, device
-    print(request)
-    # payload = ujson.loads(request)
-    str = ujson.dumps(request)
-    payload = ujson.loads(str)
+
+    payload = ujson.loads(request['params'])
 
     # 获取dict状态字段 注意要验证键存在 否则会抛出异常
     if "onoff" in payload.keys():

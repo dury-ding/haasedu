@@ -39,7 +39,7 @@
 &emsp;&emsp;
 修改humiture工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # Wi-Fi SSID和Password设置
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"
@@ -62,13 +62,15 @@ wifiPassword = "请填写您的路由器密码"
 3. **修改设备端上报温湿度信息所用标识符**
 
 humiture工程里main.py中下面的代码实现的是上传温湿度值到云端的功能。其中CurrentTemperature和CurrentHumidity便是温湿度值上报时所用的标识符。
-```
-        # 生成上报到物联网平台的属性值字串，此处的
-        upload_data = {'params': {
+```python
+        # 生成上报到物联网平台的属性值字串
+        prop = ujson.dumps({
             'CurrentTemperature': data[0],
             'CurrentHumidity': data[1]
-        }
-        }
+            })
+        print('uploading data: ', prop)
+
+        upload_data = {'params': prop}
         # 上传温度和湿度信息到物联网平台
         device.postProps(upload_data)
         time.sleep(2)
@@ -86,7 +88,7 @@ humiture工程里main.py中下面的代码实现的是上传温湿度值到云�
 
 &emsp;&emsp;
 推送此脚本到HaaS EDU K1之后，串口会周期性的打印如下日志：
-```
+```log
 ...
 The temperature is: 50.4
 The humidity is: 14.0

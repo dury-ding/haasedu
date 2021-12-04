@@ -5,6 +5,7 @@ import network                   # Wi-Fi功能所在库
 import utime                     # 延时API所在组件
 from driver import UART         # UART类，实现串口通信
 import gnss                      # 定位模块gnss传感器类
+import ujson
 
 uartDev = 0
 gnssDev = 0
@@ -134,5 +135,6 @@ if __name__ == '__main__':
                     })
                 }
                 device.postProps(loc_data)
+        utime.sleep(2)
     device.close()
     uartDev.close()
