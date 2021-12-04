@@ -95,8 +95,7 @@ def on_props(request):
     global airconditioner, humidifier, airconditioner_value, humidifier_value
 
     # {"airconditioner":1} or {"humidifier":1} or {"airconditioner":1, "humidifier":1}
-    str = ujson.dumps(request)
-    payload = ujson.loads(str)
+    payload = ujson.loads(request['params'])
     # print (payload)
     # 获取dict状态字段 注意要验证键存在 否则会抛出异常
     if "airconditioner" in payload.keys():
@@ -191,8 +190,8 @@ if __name__ == '__main__':
     airconditioner = GPIO()
     humidifier = GPIO()
 
-    humidifier.open('led_g')     # 加湿器使用board.json中led_g节点定义的GPIO，对应HaaS EDU K1上的绿灯
-    airconditioner.open('led_b') # 空调使用board.json中led_b节点定义的GPIO，对应HaaS EDU K1上的蓝灯
+    humidifier.open('led_g')     # 加湿器使用board.json中led_g节点定义的GPIO，对应开发板上的绿灯
+    airconditioner.open('led_b') # 空调使用board.json中led_b节点定义的GPIO，对应开发板上的蓝灯
 
     # 请替换物联网平台申请到的产品和设备信息,可以参考文章:https://blog.csdn.net/HaaSTech/article/details/114360517
     get_wifi_status()

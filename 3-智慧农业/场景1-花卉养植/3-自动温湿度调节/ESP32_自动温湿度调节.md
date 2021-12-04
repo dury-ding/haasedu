@@ -27,7 +27,7 @@
 &emsp;&emsp;
 修改humiture工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # Wi-Fi SSID和Password设置
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"
@@ -40,7 +40,7 @@ wifiPassword = "请填写您的路由器密码"
 
 &emsp;&emsp;
 修改humiture工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
-```
+```python
 # 三元组信息
 productKey = "产品密钥"
 deviceName = "设备名称"
@@ -51,7 +51,7 @@ deviceSecret = "设备密钥"
 
 &emsp;&emsp;
 humiture工程里main.py中下面的代码实现的是上传温湿度值到云端的功能。其中CurrentTemperature和CurrentHumidity便是温湿度值上报时所用的标识符。
-```
+```python
 # 上传温度信息和湿度信息到物联网平台
 def upload_temperature_and_Humidity():
     global device
@@ -81,21 +81,20 @@ def upload_temperature_and_Humidity():
 &emsp;&emsp;
 下面是本节添加的重点代码段落讲解：
 * 新增两个变量用来控制空调和加湿器对应的GPIO
-```
+```python
 # 空调和加湿器状态变量
 airconditioner = 0
 humidifier = 0
 ```
 
 * 新增函数处理云端信息并控制GPIO的接口
-```
+```python
 # 设置props 事件接收函数（当云平台向设备下发属性时）
 def on_props(request):
     global airconditioner, humidifier, airconditioner_value, humidifier_value
 
     # {"airconditioner":1} or {"humidifier":1} or {"airconditioner":1, "humidifier":1}
-    str = ujson.dumps(request)
-    payload = ujson.loads(str)
+    payload = ujson.loads(request['params'])
     # print (payload)
     # 获取dict状态字段 注意要验证键存在 否则会抛出异常
     if "airconditioner" in payload.keys():
@@ -144,7 +143,7 @@ def on_props(request):
 * 设备端解析到云端送下来的控制指令包含"{"airconditioner":1}"之后会打印"打开空调"并点亮蓝色LED模拟打开控制空调的继电器的动作
 
 
-```
+```log
  ==== python file check /data/pyamp/main.py ====
  ==== main.py update time = 691107276 ====
  ==== python execute from /data/pyamp/main.py ====

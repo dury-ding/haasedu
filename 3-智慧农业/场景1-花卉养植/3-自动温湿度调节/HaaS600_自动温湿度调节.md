@@ -41,7 +41,7 @@
 
 &emsp;&emsp;
 humiture工程里app.js中下面的代码实现的是上传温湿度值到云端的功能。其中CurrentTemperature和CurrentHumidity便是温湿度值上报时所用的标识符。
-```
+```python
    // 上报数据到云端
    iotdev.postProps(
        JSON.stringify({
@@ -61,14 +61,14 @@ humiture工程里app.js中下面的代码实现的是上传温湿度值到云端
 &emsp;&emsp;
 下面是本节添加的重点代码段落讲解：
 * 新增两个变量用来控制空调和加湿器对应的GPIO
-```
+```python
 # 空调和加湿器状态变量
 airconditioner = 0
 humidifier = 0
 ```
 
 * 新增函数处理云端信息并控制GPIO的接口
-```
+```python
   iotdev.onProps(function(properity) {
     console.log('received cloud properity param ' + properity.params);
     console.log('received cloud properity param len ' + properity.params_len);
@@ -96,7 +96,7 @@ humidifier = 0
 ```
 
 * 注册接收到云端控制消息的回调函数
-```
+```python
 iotdev.onProps(function(properity) {
   ...
 }
@@ -113,7 +113,7 @@ iotdev.onProps(function(properity) {
 * 当温度高于28度的时候，云端会下发打开空调({"airconditioner":1})的指令，收到此指令后绿色LED会亮起，模拟打开控制空调继电器的动作
 * 当温度低于26度的时候，云端下发关闭空调（{"airconditioner":0}，如下图所示）的指令，收到此指令后绿色LED会熄灭，模拟关闭控制空调继电器的动作
 
-```
+```log
 humi: 29.6620128658 temp: 3.058641315958127
 reporting {"CurrentHumidity":29.6620128658,"CurrentTemperature":3.058641315958127} to cloud
 received cloud properity param {"airconditioner":0}

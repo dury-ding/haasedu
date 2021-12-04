@@ -1,6 +1,6 @@
 > **学习物联网，来HaaSEDU就对了**
 
-# ESP32火焰强度检测和LED控制
+# ESP32火焰亮度测量
 
 &emsp;&emsp;
 本节课程的主要目标是通过ESP32和火焰传感器测量环境的火焰亮度信息，并实现报警灯报警的功能。
@@ -21,9 +21,9 @@
 
 ## 开发环境
 &emsp;&emsp;
-在进行下一步之前请确保HaaS EDU K1开发环境已经搭建完毕。详情请参考：
-1. [HaaS Studio开发环境](../1-IoT简介与HaaS云端一体开发框架/HaaS_Studio开发环境.md)
-2. [ESP32工程开发指南](../1-IoT简介与HaaS云端一体开发框架/ESP32工程开发指南.md)
+在进行下一步之前请确保ESP32开发环境已经搭建完毕。详情请参考：
+1. [HaaS Studio开发环境](./../../../1-快速开始/1-IoT简介与HaaS云端一体开发框架/HaaS_Studio_开发环境.md)
+2. [ESP32固件烧录](./../../../1-快速开始/1-IoT简介与HaaS云端一体开发框架/ESP32_固件烧录.md)
 <br>
 
 ## 创建解决方案
@@ -36,7 +36,7 @@
 </div>
 
 &emsp;&emsp;
-将[火焰检测和LED控制](./代码/ESP32/Python/main.py)脚本的代码复制后覆盖“fire_detector”工程根目录下main.py里边的内容。如下图所示：
+将[火焰亮度检测及报警灯控制](./代码/ESP32/Python/)脚本的代码全部复制后，覆盖到“fire_detector”工程根目录下。main.py文件如下图所示：
 <div align="center">
 <img src=./../../../图片/4_fire_detector工程_esp32.jpg width=80%/>
 </div>
@@ -55,7 +55,7 @@
 * 在没有检测到火焰的时候，火焰传感器输出电压为1.1V。
 * 在检测到火焰之后，火焰传感器输出电压会迅速下降，实际量测到的结果为几十mv左右，火焰亮度越弱，传感器输出电压越高
 
-```
+```log
 MicroPython v1.17-dirty on 2021-11-04; ESP32 module with ESP32
 Type "help()" for more information.
 >>> 
@@ -84,6 +84,6 @@ The fire status Voltage  1100
 
 <br>
 
-> 关于ESP32的详细信息请参考[ESP32开发板介绍](../../../拓展知识/HaaS硬件积木库/ESP32开发板/ESP32.md)。
+> 关于ESP32的详细信息请参考[ESP32开发板介绍](./../../../拓展知识/HaaS硬件积木库/ESP32开发板/README.md)。
 
 <br>

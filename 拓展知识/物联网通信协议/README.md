@@ -1,6 +1,6 @@
 > **学习物联网，来HaaSEDU就对了**
 
-# 物理网通信协议
+# 物联网通信协议
 
 ## 物联网通信协议简介
 &emsp;&emsp;
@@ -353,20 +353,20 @@ Client端和Server端在一定时间之内没有消息传输的时候Client端�
 
 &emsp;&emsp;
 下载完成后使用如下命令进行解压：
-```
+```bash
 unzip emqx-ubuntu20.04-4.3.2-amd64.zip
 ```
 
 &emsp;&emsp;
 解压完成之后，命令行启动MQTT broker：
 
-```
+```bash
 ./bin/emqx start
 ```
 
 &emsp;&emsp;
 MQTT broker启动成功之后，可以通过如下的网址和用户名/密码登录MQTT broker客户端。如下图所示。
-```
+```bash
 登录控制台:http://127.0.0.1:18083
 默认用户名:admin，密码：public
 ```

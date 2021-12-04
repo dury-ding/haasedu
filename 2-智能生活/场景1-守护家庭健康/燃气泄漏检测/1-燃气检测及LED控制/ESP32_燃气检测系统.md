@@ -58,7 +58,7 @@
 &emsp;&emsp;
 推送此脚本到ESP32之后，串口会打印如下日志，并周期性的输出燃气电压和报警灯状态信息。其中，“gasVoltage: xxx alarmOn: yyy”中的xxx即为燃气传感器检测到的电压值（单位：mV），yyy代表报警灯的状态，1代表打开，0代表关闭。在此过程中会看到红色LED周期性的闪烁。
 
-```
+```log
 ...
  ==== python file check /data/pyamp/main.py ====
  ==== main.py update time = 691110460 ====

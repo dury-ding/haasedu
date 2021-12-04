@@ -48,7 +48,7 @@
 产品的节点类型选择“直连设备”，数据格式选择“ICA标准数据格式”，检验类型和认证方式选择默认设定即可。开发者可根据自己的需求在“产品描述”页面添加针对此产品的描述。
 
 &emsp;&emsp;
-对于 HaaS EDU K1 等搭载 Wi-Fi 的设备而言，联网方式可以选择“Wi-Fi”。
+对于Wi-Fi上云的设备(HaaS EDU K1或ESP32等)，联网方式可以选择“Wi-Fi”。
 
 <div align="center">
     <img src=./../../../图片/5_3_创建WIFI产品.png
@@ -56,7 +56,7 @@
 </div>
 
 &emsp;&emsp;
-对于 HaaS600 等4G Cat1设备而言，联网方式可以选择“蜂窝”。
+对于4G Cat1设备(HaaS600等)，联网方式可以选择“蜂窝”。
 <div align="center">
     <img src=./../../../图片/5_3_创建蜂窝产品.png
     width=42%/>
@@ -84,48 +84,6 @@
 <div align="center">
 <img src=./../../../图片/5_3_属性详情.png width=100%/>
 </div>
-
-&emsp;&emsp;
-产品对应的物描述语言(Thing Specification Language, TSL)如下。在[创建产品（设备模型）](./README.md "创建产品（设备模型）")步骤中选择“**自定义品类**“的读者，也可以导入此TSL文件来创建相同的物模型。详情请参考[物联网平台](../../../拓展知识/物联网平台/README.md)中的内容。
-
-```
-{
-  "properties": [
-    {
-      "identifier": "GeoLocation",
-      "dataType": {
-        "type": "struct",
-        "specs": [
-          {
-            "identifier": "Longitude",
-            "dataType": {
-              "type": "double"
-            }
-          },
-          {
-            "identifier": "Latitude",
-            "dataType": {
-              "type": "double"
-            }
-          },
-          {
-            "identifier": "Altitude",
-            "dataType": {
-              "type": "double"
-            }
-          },
-          {
-            "identifier": "CoordinateSystem",
-            "dataType": {
-              "type": "enum"
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
-```
 
 &emsp;&emsp;
 定义好物模型后，记得点击“发布”以使变更生效。

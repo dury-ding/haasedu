@@ -57,7 +57,7 @@
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会周期性的打印如下日志，其中gasVoltage为燃气传感器实际测量到的电压值（单位：mV），alarmOn为红色报警LED的状态，1代表报警灯亮，0代表报警灯灭。
 
-```
+```log
 
 gasVoltage: 852 alarmOn: 1
 <D>[ADC](93) adc value: 426

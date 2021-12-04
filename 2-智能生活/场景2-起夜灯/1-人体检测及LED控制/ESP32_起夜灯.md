@@ -23,7 +23,7 @@
 
 ## 开发环境
 &emsp;&emsp;
-在进行下一步之前请确保ESP32开发环境已经搭建完毕。详情请参考[HaaS Studio开发环境](../../../1-快速开始/1-IoT简介与HaaS云端一体开发框架/HaaS_Studio_开发环境.md)的说明。
+在进行下一步之前请确保ESP32开发环境已经搭建完毕。详情请参考[HaaS Studio开发环境](./../../../1-快速开始/1-IoT简介与HaaS云端一体开发框架/HaaS_Studio_开发环境.md)的说明。
 <br>
 
 ## 创建解决方案
@@ -49,14 +49,14 @@
 
 &emsp;&emsp;
 推送此脚本到ESP32之后，串口会周期性的打印如下日志。
-```
+```log
 human is here .....
 human is here .....
 human is here .....
 ```
 
 &emsp;&emsp;
-请参考[HaaS-Studio Python工程](../../../1-快速开始/1-IoT简介与HaaS云端一体开发框架/HaaS_Studio_开发环境.md)中“HaaS-Studio Python工程 - 推送脚本到设备”的详细说明。
+请参考[HaaS-Studio Python工程](./../../../1-快速开始/1-IoT简介与HaaS云端一体开发框架/HaaS_Studio_开发环境.md)中“HaaS-Studio Python工程 - 推送脚本到设备”的详细说明。
 
 ## 系统调试
 
