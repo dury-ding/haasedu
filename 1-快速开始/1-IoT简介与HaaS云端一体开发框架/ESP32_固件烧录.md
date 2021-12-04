@@ -9,13 +9,17 @@ ESP32是开源世界中被开发者普遍使用的开发板，在ESP32中同样�
 ## 固件下载
 
 &emsp;&emsp;
-下载[ESP32 HaaS官方固件](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-esp32-nodemcu32s-v0.1.2.zip)并解压，解压完成后可以看到起目录结构如下：
+下载[ESP32 HaaS官方固件](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-esp32-nodemcu32s.zip)并解压，解压完成后可以看到起目录结构如下：
 
 ```
-.
 ├── HaaSPython-esp32-nodemcu32s-<xxx>.bin   # HaaS官方固件, <xxx>为版本号
 
 ```
+
+&emsp;&emsp;
+历史版本：
+* [ESP32-NodeMCU-V0.1.4](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-esp32-nodemcu32s-v0.1.4.zip)
+* [ESP32-NodeMCU-V0.1.2](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-esp32-nodemcu32s-v0.1.2.zip)
 
 <br>
 
@@ -43,7 +47,7 @@ ESP32是开源世界中被开发者普遍使用的开发板，在ESP32中同样�
 &emsp;&emsp;
 如果您的电脑是MAC系统，系统会自带ESP32 UART驱动程序，无需单独安装。可以在命令行中通过如下命令查看ESP32接到电脑之前和之后串口列表的差异确认ESP32串口名称。
 
-```
+```bash
 # 接入ESP32之前
 (base) ➜  ~ ls /dev/tty.usb*
 zsh: no matches found: /dev/tty.usb*
@@ -77,7 +81,7 @@ zsh: no matches found: /dev/tty.usb*
 </div>
 
 烧录过程中命令行窗口会输出如下日志，烧录完成，中断日志中会提示"Hash of data verified."。
-```
+```log
 Serial port /dev/cu.usbserial-0001
 Connecting.......
 Detecting chip type... Unsupported detection protocol, switching and trying again...

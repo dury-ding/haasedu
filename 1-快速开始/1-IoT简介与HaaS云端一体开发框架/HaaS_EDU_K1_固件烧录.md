@@ -15,7 +15,7 @@ HaaS EDU K1支持使用C/C++、Python和JavaScript语言进行开发。本节则
 &emsp;&emsp;
 下载[HaaS EDU K1 V2.0官方固件](https://hli.aliyuncs.com/o/config/haas/haaseduk1.zip)并解压，解压完成后可以看到起目录结构如下：
 
-```
+```bash
 .
 ├── __init__.py             # 初始化脚本
 ├── 20210615                # 固件版本信息，会随发布时间变化而变化
@@ -50,7 +50,7 @@ HaaS EDU K1支持使用C/C++、Python和JavaScript语言进行开发。本节则
 &emsp;&emsp;
 MAC系统需要使用到的工具：Pyhton3，pyserial
 * 安装Python指令
-```
+```bash
 brew install python3
 ```
 
@@ -58,19 +58,19 @@ brew install python3
 &emsp;&emsp;
 安装完成后，执行"Python --version"命令，确认Python版本号为3.x.x，如下所示：
 
-```
+```log
 Python 3.x.x
 ```
 
 * 安装pyserial指令
 
-```
+```bash
 pip3 install pyserial
 ```
 
 &emsp;&emsp;
 安装完成后，执行"pyserial-ports"命令，确认可以查看到系统上面的所有串口信息，如下所示(请注意每台开发电脑的输出都是不同的)。
-```
+```log
 /dev/cu.Bluetooth-Incoming-Port
 /dev/cu.CloudWalker-SPPDev-11
 /dev/cu.CloudWalker-SPPDev-13
@@ -93,14 +93,14 @@ pip3 install pyserial
 
 &emsp;&emsp;
 假设固件解压后路径为"C:\haaseduk1"。Windows下打开命令行工具（建议使用PowerShell工具）后，依次执行如下指令：
-```
+```bash
 cd C:\haaseduk1
 python.exe flash_program.py --bin=./ota_rtos.bin --bin=./littlefs.bin#0xB32000
 ```
 
 &emsp;&emsp;
 接下来烧录脚本会提示让输入串口，此串口即为HaaS EDU K1和PC连接后设备管理器中新产生的串口。
-```
+```bash
 binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
 
 --- Available ports:
@@ -117,7 +117,7 @@ binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
 
 &emsp;&emsp;
 假设固件解压后路径为"~/Downloads/haaseduk1"。
-```
+```bash
 cd ~/Downloads/haaseduk1
 python flash_program.py --bin=./ota_rtos.bin --bin=./littlefs.bin#0xB32000
 ```
@@ -125,7 +125,7 @@ python flash_program.py --bin=./ota_rtos.bin --bin=./littlefs.bin#0xB32000
 
 &emsp;&emsp;
 接下来烧录脚本会提示让输入串口，此串口即为HaaS EDU K1和PC连接后设备管理器中新产生的串口。
-```
+```bash
 binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
 
 --- Available ports:
@@ -140,7 +140,7 @@ binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
 
 &emsp;&emsp;
 选择好目标串口之后，当看到如下所示的提示后，则表明烧录过程开始：
-```
+```bash
 (ash:/data)# reboot
 ?H???
 
@@ -177,7 +177,7 @@ Packet End >>>
 &emsp;&emsp;
 如果在烧录的过程中会出现如下提示，请按下HaaS EDU K1上复位按钮(正面屏幕旁边的最小的按钮)重启设备。
 
-```
+```log
 "Please reboot the board manually"
 ```
 
@@ -201,14 +201,14 @@ Windows系统可以使用Putty工具，工具的设定请参考下图：
 
 &emsp;&emsp;
 MacOS 推荐使用picocom串口工具。picocom安装命令如下。
-```
+```bash
 brew install picocom
 ```
 
 
 &emsp;&emsp;
 此工具只能通过命令行启动，启动命令如下：
-```
+```bash
 picocom -b 1500000 /dev/cu.usbserial-AU03OKKM
 ```
 
@@ -223,7 +223,7 @@ picocom -b 1500000 /dev/cu.usbserial-AU03OKKM
 <br>
 
 ### MAC系统
-```
+```json
   {
     "chip_haas1000": {
         "baudrate": "1500000",
@@ -239,7 +239,7 @@ picocom -b 1500000 /dev/cu.usbserial-AU03OKKM
 <br>
 
 ### Windows系统
-```
+```json
 {
     "chip_haas1000": {
         "baudrate": "1500000",
@@ -258,7 +258,7 @@ serialport 字段为HaaS设备在当前电脑上的串口路径，不同设备�
 &emsp;&emsp;
 如果在烧录的过程中出现如下错误，则表明设备的串口信息发生改变。可以按照第二步的操作，在终端输入 pyserial-ports 命令获取有效的串口信息并修改serialport 字段 即可。
 
-```
+```bash
 python flash_program.py --bin=./ota_rtos.bin --bin=./littlefs.bin#0xB32000
 binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
 serial port is /dev/cu.xxxxxxxxxxxxx

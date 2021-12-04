@@ -127,7 +127,7 @@ HaaS600 ES600S选择duptape即可。
 
 &emsp;&emsp;
 MacOS下HaaS600 EC600S推送脚本过程中，HaaS Studio烧录脚本如果报如下错误：
-```
+```log
 device type: ymodem
 generating app package...
 Wait shakehand with board ...

@@ -148,7 +148,7 @@
  width=40%/>
 </div>
 
-```
+```js
 # 物联网平台相关的key和serect定义
  const productKey = '产品密钥';     //请输入您的pk
  const deviceName = '设备名称';    //请输入您的dn
@@ -160,7 +160,7 @@
 &emsp;&emsp;
 light_smart工程里app.js中下面的代码实现的是上传光强度值到云端的功能，其中Brightness便是光强度值上报时所用的标识符。
 
-```
+```js
  // 每5秒钟上报温湿度数据
  setInterval(function () {
   var lightness = light_adc.adc_readValue(lightObj);

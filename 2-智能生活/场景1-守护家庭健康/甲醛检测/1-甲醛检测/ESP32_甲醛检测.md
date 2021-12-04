@@ -18,14 +18,17 @@
 ### 创建解决方案
 
 &emsp;&emsp;
-如下图所示，打开VS Code之后在新建一个基于python_gpio的python工程，设定好工程名称（“hcho_detector”）及工作区路径之后，硬件类型选择ESP32，点击立即创建，创建一个Python轻应用的解决方案。
+如下图所示，打开VS Code之后在新建一个基于helloworld的python工程，设定好工程名称（“hcho_detector”）及工作区路径之后，硬件类型选择ESP32，点击立即创建，创建一个Python轻应用的解决方案。
 
 <div align="center">
 <img src=./../../../../图片/2_创建hcho_detector工程_esp32.jpg width=40%/>
 </div>
+<br>
+
 ## DAC模式
 > 使用DAC模式前，请先将拨码开关切换到DAC一端。
 
+&emsp;&emsp;
 输出模拟电压（V）与浓度(ppm)是线性关系，0.4V对应0ppm, 2.0V对应5ppm，因此电压与浓度的线性关系图如下图所示：
 <div align="center">
 <img src=./../../../../图片/2_甲醛检测_DAC电压曲线.png  width=100%/>
@@ -39,7 +42,7 @@
 <br>
 
 ### 案例代码
-将[甲醛检测和LED控制](./代码/ESP32/Python/main.py)脚本的代码复制后覆盖“hcho_detector”工程根目录下main.py里边的内容。如下图所示：
+将[甲醛检测和LED控制](./代码/ESP32/Python/)文件下所有脚本代码复制后，覆盖刚创建的“hcho_detector”工程根目录下的文件。main.py代码区如下图所示：
 <div align="center">
 <img src=./../../../../图片/2_hcho_detector工程_esp32.jpg width=80%/>
 </div>
@@ -56,7 +59,7 @@
 &emsp;&emsp;
 实际日志输入如下所示：
 
-```
+```log
 mount fs
  ==== python file check /data/pyamp/main.py ====
  ==== main.py update time = 691090236 ====

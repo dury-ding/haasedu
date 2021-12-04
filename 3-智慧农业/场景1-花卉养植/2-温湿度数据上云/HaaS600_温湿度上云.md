@@ -39,7 +39,7 @@
 1. **修改设备端上报温湿度信息所用标识符**
 
 humiture工程里app.js中下面的代码实现的是上传温湿度值到云端的功能。其中CurrentTemperature和CurrentHumidity便是温湿度值上报时所用的标识符。
-```
+```python
    // 上报数据到云端
    iotdev.postProps(
        JSON.stringify({
@@ -63,7 +63,7 @@ humiture工程里app.js中下面的代码实现的是上传温湿度值到云端
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会周期性的打印如下日志。其中"reporting xxx to cloud"中的xxx即为设备端上报的温湿度信息的属性值（格式为json格式）。
 
-```
+```log
 
 humi: 29.3003740444 temp: 3.058641315958127
 reporting {"CurrentHumidity":29.3003740444,"CurrentTemperature":3.058641315958127} to cloud

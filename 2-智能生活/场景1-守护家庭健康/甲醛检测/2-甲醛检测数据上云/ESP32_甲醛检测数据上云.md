@@ -14,15 +14,15 @@
 ## 代码编辑及讲解
 
 &emsp;&emsp;
-本节课程是在[甲醛检测](../1-甲醛检测/README.md)的基础上进行开发，设备端的工程无需再创建，只需要将[main.py](./代码/HaaS_EDU_K1/Python/main.py)脚本的代码复制后覆盖hcho_detector工程根目录下的main.py里边的内容后需要完成以下三处代码修改。
+本节课程是在[甲醛检测](../1-甲醛检测/ESP32_甲醛检测.md)的基础上进行开发，设备端的工程无需再创建，只需要将[main.py](./代码/ESP32/Python/main.py)脚本的代码复制后覆盖hcho_detector工程根目录下的main.py里边的内容，然后需要完成以下三处代码修改：
 > Python脚本的详细说明请参考脚本内嵌的文字版注释
 
 1. **修改路由器名称及密码**
-&emsp;&emsp;
 
+&emsp;&emsp;
 修改hcho_detector工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # Wi-Fi SSID和Password设置
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"
@@ -37,7 +37,7 @@ wifiPassword = "请填写您的路由器密码"
 修改本工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
 
 <div align="center">
-<img src=./../../../../图片/1_修改设备端三元组信息_马赛克_esp32.jpg
+<img src=./../../../../图片/1_修改设备端三元组信息_马赛克_esp32.png
  width=80%/>
 </div>
 
@@ -46,7 +46,7 @@ wifiPassword = "请填写您的路由器密码"
 &emsp;&emsp;
 hcho_detector工程里main.py中下面的代码实现的是上传甲醛检测结果到云端的功能。其中HCHO便是甲醛检测结果上报云端所用的标识符。
 
-```
+```python
     data = get_hcho_value()
     H_str = "Hcho : " + str(round(data,2))+'ppm'
     print('Hcho :' + str(round(data,2)) +'ppm')
@@ -71,15 +71,15 @@ hcho_detector工程里main.py中下面的代码实现的是上传甲醛检测结
 
 <br>
 
-## 推送脚本到HaaS EDU K1并运行
+## 推送脚本到ESP32并运行
 
 &emsp;&emsp;
 请参考[HaaS-Studio Python工程](../../../../1-快速开始/1-IoT简介与HaaS云端一体开发框架/HaaS_Studio_开发环境.md)中“HaaS-Studio Python工程 - 推送脚本到设备”的详细说明。
 
 &emsp;&emsp;
-推送此脚本到HaaS EDU K1之后，串口会周期性的打印如下日志：
+推送此脚本到ESP32之后，串口会周期性的打印如下日志：
 
-```
+```log
 >>> execfile("/data/pyamp/main.py")
 wifi_connected: False
 wifi_connected: False

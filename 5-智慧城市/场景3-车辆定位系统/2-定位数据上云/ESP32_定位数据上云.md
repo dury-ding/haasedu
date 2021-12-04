@@ -19,7 +19,7 @@
 ## 代码编辑及讲解
 
 &emsp;&emsp;
-将定位数据上云的文件[main.py](./代码/ESP32/Python/main.py)复制后覆盖上节课程中创建的工程目录（your_project_path/solutions/your_project_name）下，替换原有的main.py。如下图所示：
+将定位数据上云的文件[main.py](./代码/ESP32/Python/main.py)复制后，覆盖上节课程中创建的gnss工程目录，替换原有的main.py。如下图所示：
 <div align="center">
 <img src=./../../../图片/5_3_Python工程复制脚本_esp32.jpg width=100%/>
 </div>
@@ -63,7 +63,7 @@ deviceSecret   = "设备密钥"
 &emsp;&emsp;
 出现此段日志时，说明定位信息上报成功，读者此时可以前往物联网平台查看设备的实时定位数据，具体的操作请参考[在物联网平台上查看设备数据](./README.md "在物联网平台上查看设备数据")
 
-```
+```log
 ...
 
 ************* python task init*******

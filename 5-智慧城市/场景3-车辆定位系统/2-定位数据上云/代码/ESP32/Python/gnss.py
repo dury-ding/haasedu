@@ -19,7 +19,7 @@ class Gnss(object):
         sentence = bytearray(100)
         recvsize = self.uartObj.read(sentence)
         if(recvsize):
-            # print(sentence)
+            print(sentence)
             sentence = sentence.decode()
             # 解析地理位置信息
             for c in sentence:

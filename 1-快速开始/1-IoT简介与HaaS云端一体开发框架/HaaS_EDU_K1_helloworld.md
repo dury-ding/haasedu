@@ -23,7 +23,7 @@
 &emsp;&emsp;
 helloworld工程中脚本（main.py）内容如下：
 
-```
+```python
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 '''
@@ -52,7 +52,7 @@ if __name__ == '__main__':
 &emsp;&emsp;
 推送此脚本到HaaS EDU K1之后，重启设备。系统启动后，打开设备端的串口工具，可以看到设备会周期性的打印如下日志。
 
-```
+```log
 ...
 helloworld
 helloworld

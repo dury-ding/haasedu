@@ -53,7 +53,7 @@
 
 &emsp;&emsp;
 推送此脚本到ESP32之后，HaaS Studio会打开ESP32串口，并运行main.py脚本，此时可以看到程序运行后，串口会周期性的打印温湿度信息出来，如下日志。
-```
+```log
 ...
 ************* python task init*******
 mount fs

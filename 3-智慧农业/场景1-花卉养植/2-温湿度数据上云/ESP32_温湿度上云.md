@@ -39,7 +39,7 @@
 &emsp;&emsp;
 修改humiture工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # Wi-Fi SSID和Password设置
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"
@@ -52,7 +52,7 @@ wifiPassword = "请填写您的路由器密码"
 
 &emsp;&emsp;
 修改humiture工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
-```
+```python
 # 三元组信息
 productKey = "产品密钥"
 deviceName = "设备名称"
@@ -63,7 +63,7 @@ deviceSecret = "设备密钥"
 
 &emsp;&emsp;
 humiture工程里main.py中下面的代码实现的是上传温湿度值到云端的功能。其中CurrentTemperature和CurrentHumidity便是温湿度值上报时所用的标识符。
-```
+```python
 # 上传温度信息和湿度信息到物联网平台
 def upload_temperature_and_Humidity():
     global device
@@ -101,7 +101,7 @@ def upload_temperature_and_Humidity():
 * “物联网平台连接成功” 代表成功连接到物联网平台
 * "uploading data:"之后跟着的为设备端向云端发布的温湿度属性信息，其中CurrentTemperature后面的数值为温度值，单位：摄氏度；CurrentHumidity后面数值为相对湿度值。
 
-```
+```log
  ==== python file check /data/pyamp/main.py ====
  ==== main.py update time = 691107276 ====
  ==== python execute from /data/pyamp/main.py ====

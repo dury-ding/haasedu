@@ -71,13 +71,13 @@ VS Code安装包下载网站： https://code.visualstudio.com/
 
 &emsp;&emsp;
 MacOS建议读者使用picocom串口工具，picocom工具的安装命令如下：
-```
+```bash
 brew install picocom
 ```
 
 &emsp;&emsp;
 picocom安装完成后，以为例命令如下：
-```
+```bash
 picocom -b 115200 /dev/tty.usbserial-AU03OKKM
 ```
 

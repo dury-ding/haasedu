@@ -103,11 +103,11 @@
 &emsp;&emsp;
 脚本下载完成后，系统会有如下提示：
 * HaaS EDU K1：  
-```
+```log
 Ymodem transfer file finish
 ```
 
 * ESP32：
-```
+```log
 upload success
 ```

@@ -19,7 +19,7 @@
 &emsp;&emsp;
 修改gas_detector工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # Wi-Fi SSID和Password设置
 wifi_ssid = "请填写您的路由器名称"
 wifi_password = "请填写您的路由器密码"
@@ -33,7 +33,7 @@ wifi_password = "请填写您的路由器密码"
 &emsp;&emsp;
 修改gas_detector工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下所示：
 
-```
+```python
 # 三元组信息
 productKey = "产品密钥"
 deviceName = "设备名称"
@@ -44,7 +44,7 @@ deviceSecret = "设备密钥"
 &emsp;&emsp;
 gas_detector工程里main.py中下面的代码实现的是上传燃气检测结果和报警灯状态到云端的功能。其中gasVoltate便是燃气检测结果上报云端所用的标识符。代码逻辑及功能说明如下：
 
-```
+```python
 # 上传温度信息和湿度信息到物联网平台
 def upload_gas_detector_state():
     global device, alarmOn, mq2Dev
@@ -55,7 +55,7 @@ def upload_gas_detector_state():
     while True:
         gasVoltage = mq2Dev.getVoltage()   # 呼叫mq2传感器库提供的getVoltage函数获取电压值，单位：mV
     
-        print(gasVoltage)
+        #print(gasVoltage)
         data = ujson.dumps({
             'gasVoltage': gasVoltage,
             'alarmLight': alarmOn
@@ -92,7 +92,7 @@ def upload_gas_detector_state():
 * "reporting data to cloud:"之后跟着的为设备端向云端发布的燃气检测结果信息，gasVoltage后 的值为燃气传感器检测的电压值，单位：mV
 * "{"alarmLight":x}"则是收到云端回复的控制报警灯亮灭的控制指令，1代表打开报警灯，此时接在ESP32的红色LED应该亮起；0代表关闭报警灯，此时接在ESP32的红色LED应该熄灭。(注意：这条log的行为是云端下发控制指令触发，只有在完成“物联网应用及报警逻辑”小节之后才会打印)
 
-```
+```log
  ==== python file check /data/pyamp/main.py ====
  ==== main.py update time = 691110460 ====
  ==== python execute from /data/pyamp/main.py ====

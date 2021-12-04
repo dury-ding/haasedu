@@ -32,7 +32,7 @@
 2. **修改设备端上报数据所用标识符**
 
 hcho_detector工程里app.js中下面的代码实现的是上传甲醛检测结果到云端的功能。其中HCHO便是甲醛检测结果上报云端所用的标识符。
-```
+```python
     // 上报数据到云端
     iotdev.postProps(
        JSON.stringify({
@@ -57,7 +57,7 @@ hcho_detector工程里app.js中下面的代码实现的是上传甲醛检测结�
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会周期性的打印如下日志：
 
-```
+```log
 <D>[ADC](93) adc value: 216
 
 <D>[ADC](93) adc value: 219

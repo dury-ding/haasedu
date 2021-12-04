@@ -46,42 +46,60 @@ Python轻应用是一套端云结合、软硬结合的一站式解决方案，�
 &emsp;&emsp;
 前文介绍了Python轻应用的分层架构，本节内容将介绍Python轻应用和原生MicroPython相比的差异。
 1. 更好的解决数据上云问题  
-物联网中最常用的场景是数据上云及远程设备控制，针对这点，Python轻应用提供了简单易用的硬件访问接口及包括Socket，HTTP，HTTPS，Websocket，MQTT及LinkSDK（连接阿里云物联网平台的SDK）在内的多种网络功能。以下是基于Python轻应用框架实现远程控制HaaS EDK K1 LED灯的例子。可以看出只需要数十行代码就可以完成物联网设备数据上云及远程控制的功能。
+物联网中最常用的场景是数据上云及远程设备控制，针对这点，Python轻应用提供了简单易用的硬件访问接口及包括Socket，HTTP，HTTPS，Websocket，MQTT及aliyunIoT（连接阿里云物联网平台的SDK）在内的多种网络功能。以下是基于Python轻应用框架实现远程控制HaaS EDK K1 LED灯的例子。可以看出只需要数十行代码就可以完成物联网设备数据上云及远程控制的功能。
 
-```
+```python
 # -*- coding: UTF-8 -*-
 import iot
 import utime
 from driver import GPIO
 import ujson
-# 初始化linkkit sdk
+
+productKey     = "产品key"
+deviceName     = "设备名称"
+deviceSecret   = "设备密钥"
+
+# 初始化aliyunIoT sdk
 key_info = {
     'region' : 'cn-shanghai' ,
-    'productKey' : 'xxxxx',
-    'deviceName': 'xxxxx',
-    'deviceSecret': 'xxxxx',
-    'productSecret': 'xxxxx'
+    'productKey' : productKey,
+    'deviceName': deviceName,
+    'deviceSecret': deviceSecret,
+    'keepaliveSec': 60
 }
+
+# 物联网平台连接成功的回调函数
+def on_connect(data):
+    global iot_connected
+    iot_connected = True
+
 # 物联网平台连接成功的回调函数
 def on_props(request):
 #服务端返回的json转换成dict并获取dict中led状态
+    payload = ujson.loads(request['params'])
+    state = payload["ledSwitch"]
+    gpio = GPIO()
+    gpio.open('led1')
+    gpio.write(state)
+    gpio.close()
 
-payload = ujson.loads(request)
-state = payload["ledSwitch"]
-gpio = GPIO()
-gpio.open('led1')
-gpio.write(state)
-gpio.close()
 def main():
-# 连接物联网平台
-device = iot.Device(key_info)
-device.on('props',on_props)
-device.connect()
-while True:
-    	utime.sleep(1)
-device.close()
+    # 将三元组信息设置到iot组件中
+    device = Device()
+
+    # 设定连接到物联网平台的回调函数，如果连接物联网平台成功，则调用on_connect函数
+    device.on(Device.ON_CONNECT, on_connect)
+
+    # 配置收到云端属性控制指令的回调函数，如果收到物联网平台发送的属性控制消息，则调用on_props函数
+    device.on(Device.ON_PROPS, on_props)
+
+    # 启动连接阿里云物联网平台过程
+    device.connect(key_info)
+    while True:
+            utime.sleep(1)
+    device.close()
 if __name__ == "__main__":
-main()
+    main()
 
 ```
 
@@ -138,7 +156,7 @@ Python轻应用支持了Python3的基础语法，也支持了闭包、异常处�
 
 2.	常见数据类型和运算符  
 
-```
+```python
 # 运算符四则运算 +/-/*//
 1 + 2       # 3
 2 – 1       # 1
@@ -176,13 +194,13 @@ None is None      # True
 ```
 
 3.	变量申明  
-```
+```python
 # 变量不需要提前声明，变量必须初始化，如果访问为初始化的变量会报异常
 var = 1
 ```
 
 4.	控制语句  
-```
+```python
 #  for循环，输出 0，1，2
 for i in range(2):
     print(i)
@@ -200,7 +218,7 @@ add(1,2)
 
 5.	类定义
 Python原生支持面向对象，Python的类(class)
-```
+```python
 # 定义类类型
 #定义cat类，继承animal
 class cat(animal):
@@ -236,7 +254,7 @@ Cat.run()
 
 &emsp;&emsp;
 这段代码执行结果如下
-```
+```log
 I am a cat, my name is kelly, miao!
 2
 grunt
@@ -245,7 +263,7 @@ grunt
 
 6.	模块
 
-```
+```python
 import driver
 from driver import uart
 from driver import uart，i2c
@@ -264,27 +282,21 @@ Python轻应用编程接口分两部分，第一部分是基础库接口，第�
 Python轻应用基础接口实现了对MicroPython原生接口的完全兼容，这些接口可以满足包括运算、数组、队列、堆、文件、线程等最基础的编程Python需求。Python轻应用基础接口列表见下表。每个模块的详细接口介绍及参考代码请点击超链接查阅接口的详细说明。
 
 |库名称|库说明|超链接|
-|:-:|:-:|:-:|
-|math|数学函数|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/math.html)|
-|cmath|复杂数学函数|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/cmath.html)|
-|uarry|数组|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uarray.html)|
-|ubinascii|二进制/ASCII转换|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ubinascii.html)|
-|uerrno|系统错误码|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uerrno.html)|
-|ucollections|容器|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ucollections.html)|
-|uhashlib|散列算法|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uhashlib.html)|
-|uheapq|堆队列算法|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uheapq.html)|
-|uio|输入/输出流|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uio.html)|
-|ujson|JSON编解码|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ujson.html)|
-|uos|基础系统操作模块|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uos.html)|
-|ure|正则表达式|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ure.html)|
-|uselect|在一组流中等待事件|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uselect.html)|
-|usocket|socket模块|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/usocket.html)|
-|ussl|套接字对象的TLS/SSL包装器|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ussl.html)|
-|ustruct|打包和解压原始数据类型|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ustruct.html)|
-|usys|系统相关函数|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/usys.html)|
-|utime|时间相关函数|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/utime.html)|
-|uzlib|zlib解压缩|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/uzlib.html)|
-|_thread|底层多线程|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/_thread.html)|
+|:-:|:-|:-:|
+|math|数学函数|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/math)|
+|ubinascii|二进制/ASCII转换|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/ubinascii)|
+|ucollections|容器|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/ucollections)|
+|uhashlib|散列算法|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/uhashlib)|
+|uio|输入/输出流|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/uio)|
+|ujson|JSON编解码|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/json)|
+|uos|基础系统操作模块|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/uos)|
+|usocket|socket模块|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/usocket)|
+|ustruct|打包和解压原始数据类型|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/ustruct)|
+|sys|系统相关函数|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/sys)|
+|utime|时间相关函数|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/utime)|
+|uzlib|zlib解压缩|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/uzlib)|
+|_thread|底层多线程|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/_thread)|
+|bluetooth|蓝牙BLE功能|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/standard_api/bluetooth)|
 
 
 <br>
@@ -295,19 +307,19 @@ Python轻应用基础接口实现了对MicroPython原生接口的完全兼容，
 Python轻应用扩展接口完成了一些高级功能的易用性封装，例如蓝牙配网、物联网设备管理及机器视觉等。下表罗列了最新版本Python轻应用支持的高级编程库。各模块详细的接口文档和参考代码请点击超链接查阅接口的详细说明。
 
 |库名称|库说明|超链接|
-|:-:|:-:|:-:|
-|iot|阿里云物联网平台|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/iot.html)|
-|minicv|机器视觉相关功能函数|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Minicv.html)|
-|OSS|阿里云存储服务|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/OSS.html)|
-|audio| 音频录制和播放|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/_audio.html)|
-|ble_netconfig|蓝牙配置功能|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ble_netconfig.html)|
-|http|HTTP模块|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/http.html)|
-|mqtt|MQTT连接模块|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/mqtt.html)|
-|modbus|Modbus协议|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/_modbus.html)|
-|ulog|log分级打印模块|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ulog.html)|
-|OTA|Python轻应用在线更新|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/ota.html)|
-|camera| 摄像头功能模块|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/camera.html)|
-|recorder|RTSP视频流模块|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/recorder.html)|
+|:-:|:-|:-:|
+|aliyunIoT Device|物联网平台设备类功能|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/aliyunIoT/device)|
+|aliyunIoT Gateway|物联网平台网关类功能|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/aliyunIoT/gateway)|
+|kv|键值对存储系统|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/kv)|
+|OSS|阿里云存储服务|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/oss)|
+|audio| 音频录制和播放|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/audio)|
+|bleNetConfig|蓝牙配网功能|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/bleNetConfig)|
+|http|HTTP模块|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/http)|
+|modbus|Modbus协议|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/modbus)|
+|ulog|log分级打印模块|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/ulog)|
+|OTA|Python轻应用在线更新|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/ota)|
+|ucamera| 摄像头功能模块|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/ucamera)|
+|AI|人工智能功能模块|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/AI)|
 
 &emsp;&emsp;
 driver模块是HaaS团队开发的一套更规范的硬件接口控制库，相对于MicroPython官方提供的machine库，driver库屏蔽掉了更多的硬件细节，有统一的硬件接口访问模型，从而更符合高级语言的编程习惯，例如，典型的外设控制函数包括open、read、write、close等。
@@ -316,21 +328,19 @@ driver模块是HaaS团队开发的一套更规范的硬件接口控制库，相�
 目前driver模块中已支持的硬件接口类及其功能描述见下表，更详细的接口文档和参考代码请点击超链接查阅接口的详细说明。
 
 |库名称|库说明|超链接|
-|:-:|:-:|:-:|
-|BoardConfig|硬件端口配置文件详解|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.BoardConfig.html)|
-|UART|通用异步收发传输器|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.UART.html)|
-|GPIO| 控制I/O引脚|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.GPIO.html)|
-|ADC| 模拟信号转数字信号|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.ADC.html)|
-|PWM|脉冲宽度调制|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.PWM.html)|
-|I2C|I2C协议驱动库|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.I2C.html)|
-|SPI|串行外设接口总线协议(master side)|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.SPI.html)|
-|TIMER|硬件定时器|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.TIMER.html)|
-|KV|键值存储|[点我查看说明](https://g.alicdn.com/HaaSAI/PythonDoc/library/Driver.KV.html)|
+|:-:|:-|:-:|
+|UART|通用异步收发传输器|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/driver/uart)|
+|GPIO| 控制I/O引脚|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/driver/gpio)|
+|ADC| 模拟信号转数字信号|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/driver/adc)|
+|PWM|脉冲宽度调制|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/driver/pwm)|
+|I2C|I2C协议驱动库|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/driver/i2c)|
+|SPI|串行外设接口总线协议(master side)|[点我查看说明](https://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/driver/spi)|
+|TIMER|硬件定时器|[点我查看说明](http://hli.aliyuncs.com/haas-static/haasapi/index.html#/Python/docs/zh-CN/haas_extended_api/driver/timer)|
 
 &emsp;&emsp;
 接下来，本节结合一段通过I2C接口进行数据读写操作的代码介绍一下driver库带来的便捷。以下是Python脚本中的代码：
 
-```
+```python
 # coding=utf-8
 # This is a sample Python script.
 from driver import I2C   # 从driver库中引入I2C类
@@ -350,7 +360,7 @@ print("-------------------i2c test--------------------")
 &emsp;&emsp;
 board.json为全局配置文件，配置的是硬件接口及硬件设备标识信息，以下代码定义的是一个名为pca9544的I2C类型的从设备，其地址为112，I2C通信频率为100000 bps，和主机通信所用的I2C接口ID为1。
 
-```
+```python
 {
     "version": "1.0.0",
     "io": {

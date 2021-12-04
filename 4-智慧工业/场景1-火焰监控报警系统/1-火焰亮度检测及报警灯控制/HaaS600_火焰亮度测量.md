@@ -59,7 +59,7 @@ JS脚本运行之后，系统会周期性的读取火焰传感器的测量结果
 *  “fireVoltage：yyy”：yyy则为实际ADC输入的电压值，单位：mV
 *  “alarmOn: x”：x为报警灯的状态，1代表报警灯打开，0代表报警灯关闭
 
-```
+```log
 <D>[ADC](93) adc value: 1299
 
 fireVoltage: 2598
