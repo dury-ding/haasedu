@@ -15,20 +15,21 @@
 
 同时，这里也呼吁HaaS的开发者积极地参与进来，从一名接受者变成一名供给者，把自己做的有趣好玩的智能硬件与大家一起分享起来，成为真正的HaaS大玩家。下面来看HaaS生态硬件积木库：
 
-| 序号 | 名称 | 硬件介绍 |场景案例 | 购买链接 | 
-| :-: | :-: |  :- | :- | :- | 
-| 1 | DHT11温湿度传感器 | [DHT11温湿度传感器](./DHT11温湿度传感器.md)  |[智慧农业-场景1-花卉养殖](./../../../3-智慧农业/场景1-花卉养植/README.md) | [购买链接](https://www.dfrobot.com.cn/goods-109.html) |
-| 2 | 人体红外传感器 | [人体红外传感器](。/../人体红外传感器.md)  |[智能生活-场景6-起夜灯](./../../../2-智能生活/场景2-起夜灯/README.md) | [购买链接](https://www.dfrobot.com.cn/goods-989.html) |
-| 3 | 甲醛传感器 | [甲醛传感器](./甲醛传感器.md)  |[智能生活-场景1-甲醛检测](./../../../2-智能生活/场景1-守护家庭健康/甲醛检测/README.md)| [购买链接](https://www.dfrobot.com.cn/goods-1373.html) |
-| 4 | 模拟烟雾传感器 | [模拟烟雾传感器](./模拟烟雾传感器.md)  |[智慧工业-场景1-烟雾监控报警系统](./../../../4-智慧工业/场景1-火焰监控报警系统/README.md)| [购买链接](https://www.dfrobot.com.cn/goods-539.html) |
-| 5 | 光照传感器 | [光照传感器](./光照传感器.md)  |[智慧城市-场景1-智慧路灯](./../../../5-智慧城市/场景1-智慧路灯/README.md)| [购买链接](https://detail.tmall.com/item.htm?id=41236263649&spm=a1z09.2.0.0.23582e8dvmkimR&_u=fvktbc7c603) |
-| 6 | GPS传感器 | [GPS传感器](./GPS传感器.md)  |[智慧城市-场景3-车辆定位系统](./../../../5-智慧城市/场景3-车辆定位系统/README.md)| [购买链接](https://detail.tmall.com/item.htm?id=624818869038&price=26.6&sourceType=item&sourceType=item&suid=ad59cf26-7f69-413a-b68b-aec2adf0ab2f&shareUniqueId=12327961394&ut_sk=1.Xiv3G2Rx9KsDAJMZlp0doD0d_21646297_1631675328230.DingTalk.1&un=f1829ead73825e46875dbdeffcd1c5a5&share_crt_v=1&cpp=1&shareurl=true&spm=a313p.22.1pw.1314950616524&short_name=h.f2n2K8t&bxsign=scdy4iisyiCmWe6Vjv3QqLEhXJuph-ngG8mQ_pa8_9bVy0a6Imtb21cchxHNdu1nQp1iJ2s-w-poP8sRFC_t7_4zKdp8Lx_hKdo0FUiP9Yve68&app=macos_safari) |
-| 7 | 火焰传感器 | [火焰传感器](./火焰传感器.md)  |[智慧工业-场景4-明火检测系统](./../../../4-智慧工业/场景1-火焰监控报警系统/README.md) | [购买链接](https://detail.tmall.com/item.htm?id=41265176682&spm=a1z09.2.0.0.61952e8dceapbt&_u=fvktbc7c96d) |
-| 8 | 风扇模块 | [风扇模块](./风扇模块.md)  |[智慧农业-场景1-花卉养殖](./../../../3-智慧农业/场景1-花卉养植/README.md) | [购买链接](https://www.dfrobot.com.cn/goods-1075.html) |
-| 9 | Wi-Fi摄像头 | [Wi-Fi摄像头](./Wi-Fi摄像头.md)  |[智慧农业-场景2-水果识别系统](./../../../3-智慧农业/场景2-水果识别系统/README.md) | [购买链接](https://item.taobao.com/item.htm?spm=2013.1.0.0.159d30c6PdteGg&id=648733770711)|
-| 10 | SHT3X-DIS温湿度传感器 | [SHT3X-DIS](./温湿度传感器_SHT3X-DIS.md.md)  |[智慧农业-场景1-花卉养殖](./../../../3-智慧农业/场景1-花卉养植/README.md) | [购买链接](https://detail.tmall.com/item.htm?id=560992049885&spm=a1z09.2.0.0.24c92e8dmY0FbP&_u=ovktbc78852)|
-| 11 | AHT21B温湿度传感器 | [AHT21B](./温湿度传感器_AHT21B.md.md)  |[智慧农业-场景1-花卉养殖](./../../../3-智慧农业/场景1-花卉养植/README.md) | [购买链接](https://detail.tmall.com/item.htm?id=655313477801&spm=a1z09.2.0.0.726f2e8d4HGCyH&_u=pofbqa7343)|	
-
+ | 硬件介绍 |场景案例 | 参考购买链接 |
+ |  :- | :- | :- |
+| [SHT3X-DIS温湿度传感器](./温湿度传感器_SHT3X-DIS.md) |[智慧农业-场景1-花卉养殖](./../../../3-智慧农业/场景1-花卉养植/README.md) | [购买链接](https://detail.tmall.com/item.htm?id=560992049885&spm=a1z09.2.0.0.24c92e8dmY0FbP&_u=ovktbc78852)|
+| [人体红外传感器](。/../人体红外传感器.md)  |[智能生活-场景6-起夜灯](./../../../2-智能生活/场景2-起夜灯/README.md) | [购买链接](https://www.dfrobot.com.cn/goods-989.html) |
+| [甲醛传感器](./甲醛传感器.md)  |[智能生活-场景1-甲醛检测](./../../../2-智能生活/场景1-守护家庭健康/甲醛检测/README.md)| [购买链接](https://www.dfrobot.com.cn/goods-1373.html) |
+| [模拟烟雾传感器](./模拟烟雾传感器.md)  |[智慧工业-场景1-烟雾监控报警系统](./../../../4-智慧工业/场景1-火焰监控报警系统/README.md)| [购买链接](https://www.dfrobot.com.cn/goods-539.html) |
+| [光照传感器](./光照传感器_光敏电阻.md)  |[智慧城市-场景1-智慧路灯](./../../../5-智慧城市/场景1-智慧路灯/README.md)| [购买链接](https://detail.tmall.com/item.htm?id=41236263649&spm=a1z09.2.0.0.23582e8dvmkimR&_u=fvktbc7c603) |
+| [GPS传感器](./GPS传感器.md)  |[智慧城市-场景3-车辆定位系统](./../../../5-智慧城市/场景3-车辆定位系统/README.md)| [购买链接](https://detail.tmall.com/item.htm?id=624818869038&price=26.6&sourceType=item&sourceType=item&suid=ad59cf26-7f69-413a-b68b-aec2adf0ab2f&shareUniqueId=12327961394&ut_sk=1.Xiv3G2Rx9KsDAJMZlp0doD0d_21646297_1631675328230.DingTalk.1&un=f1829ead73825e46875dbdeffcd1c5a5&share_crt_v=1&cpp=1&shareurl=true&spm=a313p.22.1pw.1314950616524&short_name=h.f2n2K8t&bxsign=scdy4iisyiCmWe6Vjv3QqLEhXJuph-ngG8mQ_pa8_9bVy0a6Imtb21cchxHNdu1nQp1iJ2s-w-poP8sRFC_t7_4zKdp8Lx_hKdo0FUiP9Yve68&app=macos_safari) |
+| [火焰传感器](./火焰传感器.md)  |[智慧工业-场景4-明火检测系统](./../../../4-智慧工业/场景1-火焰监控报警系统/README.md) | [购买链接](https://detail.tmall.com/item.htm?id=41265176682&spm=a1z09.2.0.0.61952e8dceapbt&_u=fvktbc7c96d) |
+| [风扇模块](./风扇模块.md)  |[智慧农业-场景1-花卉养殖](./../../../3-智慧农业/场景1-花卉养植/README.md) | [购买链接](https://www.dfrobot.com.cn/goods-1075.html) |
+| [Wi-Fi摄像头](./Wi-Fi摄像头.md)  |[智慧农业-场景2-水果识别系统](./../../../3-智慧农业/场景2-水果识别系统/README.md) | [购买链接](https://item.taobao.com/item.htm?spm=2013.1.0.0.159d30c6PdteGg&id=648733770711) |
+| [DHT11温湿度传感器](./温湿度传感器_DHT11.md)  |  | [购买链接](https://www.dfrobot.com.cn/goods-109.html) |
+| [AHT21B温湿度传感器](./温湿度传感器_AHT21B.md)  |  | [购买链接](https://detail.tmall.com/item.htm?id=655313477801&spm=a1z09.2.0.0.726f2e8d4HGCyH&_u=pofbqa7343) |
+| [CHT8305温湿度传感器](./温湿度传感器_CHT8305.md)  |  |  |
+| [SI7006温湿度传感器](./温湿度传感器_SI7006.md)  |  |  |
 
 
 如需更多技术支持，可加入钉钉开发者群，或者关注微信公众号

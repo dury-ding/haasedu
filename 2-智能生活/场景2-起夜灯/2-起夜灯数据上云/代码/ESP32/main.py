@@ -110,7 +110,7 @@ def led_control(on):
 def human_detector() :
     global gpioirDev,gpioledDev,irDev
 
-    last_have_human = irDev.irDetect()   # 记录初始值
+    last_have_human = 0                 # 记录初始值
     while True :
         have_human = irDev.irDetect()   # 获取传感器的值
         if (have_human == 1) :
@@ -128,7 +128,7 @@ def human_detector() :
             device.postProps(upload_data)
 
         last_have_human = have_human    # 记录当前状态
-        utime.sleep(1)                   # 休眠1秒
+        utime.sleep(1)                  # 休眠1秒
 
     gpioirDev.close()
     gpioledDev.close()

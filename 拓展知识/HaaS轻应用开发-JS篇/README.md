@@ -83,7 +83,7 @@ TFT彩屏/数码管/三色灯
 &emsp;&emsp;
 一个最精简的轻应用包由最少两个文件组成，必须放在项目文件夹的根目录：
 
-```
+```bash
 App/
 ├── App.js		#业务逻辑入口
 └── App.json	#全局配置
@@ -103,7 +103,7 @@ App()用于注册轻应用，接受一个Object作为属性，用来配置轻应
 
 &emsp;&emsp;
 App.js参考代码如下：
-```
+```js
 App({
   onLaunch: function() {
     // 第一次打开
@@ -125,7 +125,7 @@ App({
 ### **轻应用全局配置App.json**
 &emsp;&emsp;
 App.json用于对轻应用进行全局配置，设置页面文件的路径、硬件I/O口的配置等。以下是一个定义了名为D1、D2两个GPIO的基本配置示例：
-```
+```json
 {
   "version": "0.0.1",
   "io": {
@@ -187,7 +187,7 @@ JavaScript轻应用开发流程如下图JavaScript轻应用开发流程所示：
 &emsp;&emsp;
 amp工具包中内容如下：
 
-```
+```bash
 amp-clitools
  ├── dist
  │   └── amp                  # 命令行工具
@@ -210,7 +210,7 @@ amp login <your-token>
 * 说明  
 使用在线热更新前，需要获取token（请参考 HaaS官网说明获取token），该命令用于绑定用户，仅需执行一次。使用本地串口更新时，无需执行此命令。
 * 示例  
-```
+```bash
 $ amp login b8****************************0e
 ```
 
@@ -225,7 +225,7 @@ amp device list
 
 * 示例  
 
-```
+```bash
 $ amp device list
 Your bound devices:
 8675*******3456
@@ -246,7 +246,7 @@ amp put <App-dir> <device-name>
 
 * 示例  
 
-```
+```bash
 $ amp device list
 Your bound devices:
 8675*******3456
@@ -267,7 +267,7 @@ amp pack <App-dir>
 
 * 示例  
 
-```
+```bash
 $ amp pack ./App
 generating App package...
 generate App package SUCCESS
@@ -284,7 +284,7 @@ amp seriallist
 
 * 示例  
 
-```
+```bash
 // MacOS
 $ amp seriallist
 /dev/tty.usbserial-AK08LNMO
@@ -307,7 +307,7 @@ amp serialput <App-dir> <serial-port>
 
 * 示例  
 
-```
+```bash
 $ amp seriallist
 COM59
 // 串口以实际情况为准
@@ -332,7 +332,7 @@ amp --help
 
 * 示例  
 
-```
+```bash
 $ ./amp --help
 Usage: amp [options]
 AliOS Things Mini Program PC CLI tool
@@ -385,7 +385,7 @@ Commands:
 &emsp;&emsp;
 本地热更新与实际的硬件连接强相关，以HaaS600为例，需先让开发板进入本地更新模式（请参考HaaS官网的描述），然后运行amp命令完成本地更新。
 * 操作示例：  
-```
+```bash
 $ ./amp serialput ./App /dev/tty.SLAB_USBtoUART
 device type: ymodem
 generate App package
@@ -409,7 +409,7 @@ put complete!
 &emsp;&emsp;
 已绑定的设备可以通过amp device list查看。
 * 操作示例：  
-```
+```bash
 $ ./amp login 9da64dd7e367********c02655a8abcd
 login success
 
@@ -434,7 +434,7 @@ push App package SUCCESS
 
 &emsp;&emsp;
 JavaScript Helloworld代码如下：
-```
+```js
 /* app.js */
 
 // 每隔一秒打印hello world
@@ -471,7 +471,7 @@ setInterval(() => {
 
 &emsp;&emsp;
 下面的语句创建（也可以称为"声明"或者"定义"）了一个名称为“message”的变量：
-```
+```js
 // 关键字const/var/let
 // var等价于let，推荐使用let
 // const定义的变量，必须带值，不可再变更
@@ -519,7 +519,7 @@ object 对象类型，用于更复杂的数据结构，其成员可以是任意�
 
 &emsp;&emsp;
 当创建一个对象类型并赋值给变量时，系统会在内存中自动分配一片内存空间来存放值，最终变量都存在这里。如：
-```
+```js
 var message = {
   head: 'this is head',
   payload: 100
@@ -572,7 +572,7 @@ typeof console.log // 'function'
 一般事件驱动开发会存在两个角色分别是发布者（又称触发器，Emitter）和订阅者（又称监听器，Listener），订阅者订阅自身关注的主题，一旦有发布者发布了相关的主题，订阅者收到相关的信息，并执行相对应的操作。
 以代码为例：
 
-```
+```js
 const EventEmitter = require('events');        // 引入EventEmitter类
 class ExampleEmitter extends EventEmitter {}  // 初始化一个继承Emitter的对象
 
@@ -588,7 +588,7 @@ exampleEmitter.emit('event'); // 增加一个触发器，触发'event'事件。
 
 &emsp;&emsp;
 EventEmitter类可以在events模块中定义和引出：
-```
+```js
 const EventEmitter = require('events');
 ```
 
@@ -604,7 +604,7 @@ JavaScript轻应用通过App.json来详细描述应用与硬件的配置。
 &emsp;&emsp;
 version是一个字符串类型的值，由开发者根据应用需求自定义。举例如下：
 
-```
+```json
 {
 "version": "1.0.0",
 ... ...
@@ -625,7 +625,7 @@ version是一个字符串类型的值，由开发者根据应用需求自定义�
 
 &emsp;&emsp;
 IO配置项中有type、port等硬件描述概念，对于每一款硬件（通常是芯片/模组/开发板）该配置文件均可能不同。如下面这段代码所示：
-```
+```json
 {
   "io": {
    "D1":{
@@ -663,7 +663,7 @@ D1、I2C0：定义对象，后面大括号里面则描述了该对象的类型�
 
 &emsp;&emsp;
 一个标准的GPIO配置如下所示。
-```
+```json
 {
   "io": {
     "D3": {
@@ -686,7 +686,7 @@ D1、I2C0：定义对象，后面大括号里面则描述了该对象的类型�
  * UART串口相关配置
 &emsp;&emsp;
 一个标准的UART配置如下所示。
-```
+```json
 {
   "io": {
     "UART1":{
@@ -711,7 +711,7 @@ UART示例项中的含义请参考下面的表格。
 * I2C相关配置
 &emsp;&emsp;
 一个标准的I2C配置如下所示。
-```
+```json
 {
   "io": {
     "I2C0":{
@@ -735,7 +735,7 @@ I2C示例项中的含义请参考下面的表格。
 * SPI相关配置
 &emsp;&emsp;
 一个标准的SPI配置如下所示。
-```
+```json
 {
   "io": {
     "SPI1":{
@@ -757,7 +757,7 @@ I2C示例项中的含义请参考下面的表格。
 * ADC相关配置
 &emsp;&emsp;
 一个标准的ADC配置如下所示。
-```
+```json
 {
   "io": {
     "voltage": {
@@ -778,7 +778,7 @@ ADC示例项中的含义请参考下面的表格。
 * PWM相关配置
 &emsp;&emsp;
 一个标准的PWM配置如下所示。
-```
+```json
 {
   "io": {
     "PWM1": {
@@ -798,7 +798,7 @@ PWM示例项中的含义请参考下面的表格。
 * TIMER相关配置
 &emsp;&emsp;
 一个标准的TIMER配置如下所示。
-```
+```json
 {
   "io": {
     "TIMER1": {

@@ -60,7 +60,7 @@
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会打印如下日志，其中有人在周围的时候，LED灯会亮,日志中led值设置为1；人离开后，LED灯会灭，日志中led值设置为0。
 
-```
+```log
 gpio: led set value 1
 gpio: led set value 0
 gpio: led set value 1

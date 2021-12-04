@@ -4,7 +4,7 @@ from aliyunIoT import Device     # iot组件是连接阿里云物联网平台的
 import network                   # Wi-Fi功能所在库
 import utime                     # 延时API所在组件
 import ujson                     # json字串解析库
-from driver import GPIO          # HaaS EDU K1 LED使用GPIO进行控制
+from driver import GPIO          # 开发板 LED使用GPIO进行控制
 from driver import ADC           # ADC类，通过微处理器的ADC模块读取ADC通道输入电压
 import fire                      # fire火焰传感器类
 
@@ -66,10 +66,8 @@ def on_connect(data):
 # 设置props 事件接收函数（当云平台向设备下发属性时）
 def on_props(request):
     global alarm_on, device
-    print(request)
-    # payload = ujson.loads(request)
-    str = ujson.dumps(request)
-    payload = ujson.loads(str)
+    # print(request)
+    payload = ujson.loads(request['params'])
 
     # 获取dict状态字段 注意要验证键存在 否则会抛出异常
     if "alarmState" in payload.keys():
@@ -79,16 +77,17 @@ def on_props(request):
         else:
             print("结束报警")
 
-    print(alarm_on)
+    # print(alarm_on)
 
     # 根据云端设置的报警灯状态改变本地LED状态
     alarm_control(alarm_on)
 
     # 要将更改后的状态同步上报到云平台
-    upload_data = {'params': {
-        'alarmState': alarm_on,
-    }
-    }
+    prop = ujson.dumps({'alarmState': alarm_on})
+
+    # 要将更改后的状态同步上报到云平台
+    upload_data = {'params': prop}
+
     # 上报本地报警灯状态到云端
     device.postProps(upload_data)
 

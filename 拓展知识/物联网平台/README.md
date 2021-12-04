@@ -36,14 +36,14 @@
 随着高性能硬件的发展，很多智能设备带有完整的Linux、Android等操作系统，在操作系统层面解决了不同通信模块的差异，硬件端的应用程序只需要集成云平台的IoT SDK，或者集成开源 MQTT SDK 即可和云端建立长连接通信链路。如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_资源丰富类的设备接入.png width=30%/>
+<img src=./../../图片/ext_物联网平台_资源丰富类的设备接入.png width=30%/>
 </div>
 
 * 资源受限类的设备接入  
 物联网场景中有很大占比设备是资源受限的，运行ROTS系统，甚至无操作系统，采用MCU与通信模组的方式实现远程设备数据采集。如图 5 5所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_资源受限类设备接入.png width=30%/>
+<img src=./../../图片/ext_物联网平台_资源受限类设备接入.png width=30%/>
 </div>
 
 &emsp;&emsp;
@@ -53,7 +53,7 @@
 根据模组集成度不同，对接到阿里云IoT平台的解决方案又细分为下表所示的几种场景方案:
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_解决方案场景.png width=60%/>
+<img src=./../../图片/ext_物联网平台_解决方案场景.png width=60%/>
 </div>
 
 <br>
@@ -62,7 +62,7 @@
 物联网场景中还有大量设备仅具有本地局域通信能力，比如蓝牙设备、ZigBee设备、LoRa设备、Modbus设备，而不具有互联网接入协议栈支持，此时需要借助 DTU/网关设备，代理子设备把本地协议转换成MQTT协议，从而实现数据采集上云，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_本地直连类设备接入.png width=30%/>
+<img src=./../../图片/ext_物联网平台_本地直连类设备接入.png width=30%/>
 </div>
 
 <br>
@@ -130,7 +130,7 @@ X.509是由国际电信联盟（ITU-T）制定的数字证书标准，具有通�
 物模型是物理空间中的实体（如传感器、车载装置、楼宇、工厂等）在云端的数字化表示，从属性、服务和事件三个维度，分别描述了该实体是什么、能做什么、可以对外提供哪些信息。定义了物模型的这三个维度，即完成了产品功能的定义。物模型三个维度的详细说明请参考下表。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_物模型描述.png width=50%/>
+<img src=./../../图片/ext_物联网平台_物模型描述.png width=50%/>
 </div>
 
 &emsp;&emsp;
@@ -146,14 +146,14 @@ X.509是由国际电信联盟（ITU-T）制定的数字证书标准，具有通�
 在没有物模型的情况下，海量的物联网数据、设备、业务，异构的设备和数据描述方式，难以理解，互通困难。首先，产业链内部自成体系，模组、芯片、平台、方案商角色多样，跨角色协作时，数据标准各异，协作困难；其次，采集数据解析困难，难以结构化，数据利用效率低，数据价值难挖掘；最后，随着行业应用和设备量增长，新增应用需要针对不同的设备协议重复开发，难以规模化。 
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_没有物模型的情况.png width=50%/>
+<img src=./../../图片/ext_物联网平台_没有物模型的情况.png width=50%/>
 </div>
 
 &emsp;&emsp;
 目前物联网行业普遍存在着设备孤岛、软硬开发强耦合的问题，需要构建模型统一描述语言、面向物理实体进行统一建模，物模型作为物的抽象层屏蔽了底层终端差异，标准化了设备的能力表达和交互方式，极大降低了物联网应用开发和快速复制的成本，如下图所示的基于物模型的物联网平台。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_有物模型的情况.png width=50%/>
+<img src=./../../图片/ext_物联网平台_有物模型的情况.png width=50%/>
 </div>
 
 <br>
@@ -184,14 +184,14 @@ X.509是由国际电信联盟（ITU-T）制定的数字证书标准，具有通�
 *  物模板：一组功能模块和一组资源的集合。集合中的模块和资源可以是标准库中已有模块和资源的组装，也可以是在当前物模板新增的资源。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_物模型与数据标准库之间的关系.png width=50%/>
+<img src=./../../图片/ext_物联网平台_物模型与数据标准库之间的关系.png width=50%/>
 </div>
 
 &emsp;&emsp;
 阿里牵头的ICA标准联盟，已经沉淀了海量标准化的数据模型，核心价值是为了建模过程可以快速组装、积木式搭建、提高建模效率；另一方面标准物模板可以促进软硬件标准化，从而实现软件商、集成商对购买的硬件即插即用。 
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_ICA标准联盟合作流程.png width=50%/>
+<img src=./../../图片/ext_物联网平台_ICA标准联盟合作流程.png width=50%/>
 </div>
 
 <br>
@@ -216,7 +216,7 @@ X.509是由国际电信联盟（ITU-T）制定的数字证书标准，具有通�
 假设厂家有多个智能门锁接入物联网平台，现在需要业务服务器向全部在线设备发送一条相同的指令，使某个密码失效，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_物联网平台广播通信.png width=70%/>
+<img src=./../../图片/ext_物联网平台_物联网平台广播通信.png width=70%/>
 </div>
 
 * 业务广播Topic定义
@@ -226,7 +226,7 @@ X.509是由国际电信联盟（ITU-T）制定的数字证书标准，具有通�
 服务器通过PubBroadcast API向业务广播Topic发送广播消息，广播消息中的请求参数如下表所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_业务广播请求参数.png width=70%/>
+<img src=./../../图片/ext_物联网平台_业务广播请求参数.png width=70%/>
 </div>
 
 &emsp;&emsp;
@@ -238,7 +238,7 @@ X.509是由国际电信联盟（ITU-T）制定的数字证书标准，具有通�
 &emsp;&emsp;
 各个设备端收到的payload如下：
 
-```
+```json
 {"broadcast":"this is broadcast data"} 
 ```
 
@@ -247,7 +247,7 @@ X.509是由国际电信联盟（ITU-T）制定的数字证书标准，具有通�
 &emsp;&emsp;
 设备端应用程序代码请参考下文的说明。
 业务主程序：
-```
+```js
 /**
 * node broadcast-device.js
 */const mqtt = require('aliyun-iot-mqtt');
@@ -263,7 +263,7 @@ console.log("message " + message) })
 
 &emsp;&emsp;
 iot-device-config.json 设备配置参数：
-```
+```json
 {
 "productKey": "替换 productKey", 
 "deviceName": "替换 deviceName",
@@ -274,7 +274,7 @@ iot-device-config.json 设备配置参数：
 
 &emsp;&emsp;
 业务服务器发送广播：
-```
+```js
 /**
 * package.json 添加依赖:"@alicloud/pop-core": "1.5.2" *
 /const co = require('co');
@@ -323,7 +323,7 @@ RPC（Remote Procedure Call）采用客户机/服务器模式，用户不需要�
 RRPC原理如下图所示，图中的用户服务器即本节上文提到的服务端。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_RRPC原理.png width=60%/>
+<img src=./../../图片/ext_物联网平台_RRPC原理.png width=60%/>
 </div>
 
 &emsp;&emsp;
@@ -359,21 +359,21 @@ RRPC的实战案例请参考[阿里云物联网平台官方文档](https://help.
 基础版自定义Topic和高级版自定义的Topic，数据格式是自定义的，物联网平台不做处理，直接流转到规则引擎处理，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_基础版产品数据流转.png width=60%/>
+<img src=./../../图片/ext_物联网平台_基础版产品数据流转.png width=60%/>
 </div>
 
 &emsp;&emsp;
 高级版系统中设备payload会在云端转换成物模型payload后， 再流转到规则引擎处理，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_高级版产品数据流转.png width=60%/>
+<img src=./../../图片/ext_物联网平台_高级版产品数据流转.png width=60%/>
 </div>
 
 &emsp;&emsp;
 接下来本节通过一个实例来介绍如何将设备上传的数据转存到数据库，实验目的示意图如下图所示：
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_数据转储.png width=60%/>
+<img src=./../../图片/ext_物联网平台_数据转储.png width=60%/>
 </div>
 
 <br>
@@ -387,12 +387,12 @@ RRPC的实战案例请参考[阿里云物联网平台官方文档](https://help.
 创建基础版产品，添加自定义Topic，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_创建基础产品.png width=60%/>
+<img src=./../../图片/ext_物联网平台_创建基础产品.png width=60%/>
 </div>
 
 &emsp;&emsp;
 设备上报数据结构如下所示：
-```
+```js
 topic: /a1yDu7O53kE/temperature_parlor/user/temperatureData
 payload: { "tempearture":23, "humidity":63 }
 ```
@@ -401,7 +401,7 @@ payload: { "tempearture":23, "humidity":63 }
 添加设备获取三元组，添加标签信息，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_数据转储_添加设备.png width=60%/>
+<img src=./../../图片/ext_物联网平台_数据转储_添加设备.png width=60%/>
 </div>
 
 * 表格存储
@@ -410,7 +410,7 @@ payload: { "tempearture":23, "humidity":63 }
 开通表格存储服务（在阿里云官网搜索“表格存储”）之后，创建用于存储设备数据的表，创建过程中添加deviceId作为主键，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_创建数据表.png width=70%/>
+<img src=./../../图片/ext_物联网平台_创建数据表.png width=70%/>
 </div>
 
 * 创建规则引擎
@@ -419,33 +419,33 @@ payload: { "tempearture":23, "humidity":63 }
 创建规则引擎的过程如下图所示：
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_创建规则引擎.png width=70%/>
+<img src=./../../图片/ext_物联网平台_创建规则引擎.png width=70%/>
 </div>
 
 * 编写SQL语句，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_编写SQL语句.png width=70%/>
+<img src=./../../图片/ext_物联网平台_编写SQL语句.png width=70%/>
 </div>
 
 * 设定转发数据配置，如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_转发规则.png width=70%/>
+<img src=./../../图片/ext_物联网平台_转发规则.png width=70%/>
 </div>
 
 &emsp;&emsp;
 完整规则引擎设定如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_完整规则引擎.png width=70%/>
+<img src=./../../图片/ext_物联网平台_完整规则引擎.png width=70%/>
 </div>
 
 &emsp;&emsp;
 启动规则引擎，如下图所示，点击“启动”按钮 即可使能该规则引擎。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_启动规则引擎.png width=60%/>
+<img src=./../../图片/ext_物联网平台_启动规则引擎.png width=60%/>
 </div>
 
 <br>
@@ -454,7 +454,7 @@ payload: { "tempearture":23, "humidity":63 }
 
 &emsp;&emsp;
 模拟设备的 nodejs 脚本（脚本名称：device-2-iot-2-ots.js）内容如下：
-```
+```js
 // 引入依赖mqtt库，或自己实现。
 const mqtt = require('aliyun-iot-mqtt');
 // 设备身份。
@@ -488,12 +488,12 @@ humidity:Math.floor((Math.random() * 20) + 20)
 
 &emsp;&emsp;
 用如下命令启动虚拟设备脚本后查看云端表格里边的数据 ，如下图所示。
-```
+```bash
 node device-2-iot-2-ots.js 
 ```
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_表格存储数据.png width=80%/>
+<img src=./../../图片/ext_物联网平台_表格存储数据.png width=80%/>
 </div>
 
 &emsp;&emsp;
@@ -505,7 +505,7 @@ node device-2-iot-2-ots.js
 
 &emsp;&emsp;
 设备上线后的Payload数据格式如下:
-```
+```log
 {
 "lastTime":"2021-07-15 22:17:23.101",
 "iotId":"Bu1SQkSsVkPhh5JjXJ21000000",
@@ -523,20 +523,20 @@ node device-2-iot-2-ots.js
 该消息各参数说明如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_设备状态消息参数说明.png width=70%/>
+<img src=./../../图片/ext_物联网平台_设备状态消息参数说明.png width=70%/>
 </div>
 
 &emsp;&emsp;
 然后通过规则引擎SQL语句获取设备状态，SQL配置界面如下图所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_SQL配置界面.png width=70%/>
+<img src=./../../图片/ext_物联网平台_SQL配置界面.png width=70%/>
 </div>
 
 &emsp;&emsp;
 在“字段”和“Topic”栏位填入图中的配置后点击确认后就可以在页面看到如下的SQL语句，这边是收到设备状态变化消息过程中实际执行的SQL语句，执行完毕之后就可以从消息体获取到设备的status，currentTime和lastTime信息了，其中a1yDu7O53kE为设备的productkey。
 
-```
+```sql
 SELECT productKey, deviceName, timestamp() as timestamp , status, clientIp, time as currentTime ,lastTime 
 FROM "/as/mqtt/status/ a1yDu7O53kE/temperature_parlor"
 ```
@@ -545,14 +545,14 @@ FROM "/as/mqtt/status/ a1yDu7O53kE/temperature_parlor"
 数据流转配置界面如下图所示的操作。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_转发规则.png width=70%/>
+<img src=./../../图片/ext_物联网平台_转发规则.png width=70%/>
 </div>
 
 &emsp;&emsp;
 这样系统上线之后，查看表格中的内容如图 5 32所示。
 
 <div align="center">
-<img src=./../../图片/ext_物理网平台_表格存储_设备状态信息.png width=70%/>
+<img src=./../../图片/ext_物联网平台_表格存储_设备状态信息.png width=70%/>
 </div>
 
 <br>

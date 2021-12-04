@@ -55,7 +55,7 @@
 &emsp;&emsp;
 推送此脚本到HaaS600开发板之后，设备串口显示如下日志所示：
 
-```
+```log
 adc: open success
 AT command server ready!
 +CEREG: 0

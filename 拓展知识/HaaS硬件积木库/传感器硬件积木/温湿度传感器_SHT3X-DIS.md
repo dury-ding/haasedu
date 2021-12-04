@@ -30,7 +30,7 @@ SHT3X对象成功，返回SHT3X对象；SHT3X对象创建失败，抛出Exceptio
 
 * 示例代码：
 
-```Python
+```python
 from driver import I2C               # 驱动库
 import sht3x                         # SHT3X-DIS温湿度传感器驱动库
 
@@ -43,7 +43,7 @@ humitureDev = sht3x.SHT3X(i2cObj)   # 初始化SHT3X-DIS传感器
 ```
 
 * 输出：
-```
+```log
 sht3x inited!
 ```
 
@@ -63,7 +63,7 @@ sht3x inited!
 
 * 示例：
 
-```Python
+```python
 import I2C
 import sht3x
 
@@ -81,7 +81,7 @@ print("temperature is ", temp, "°C")
 ```
 
 * 输出：
-```
+```log
 temperature is 25.3°C
 ```
 
@@ -101,7 +101,7 @@ temperature is 25.3°C
 
 * 示例：
 
-```Python
+```python
 import I2C
 import sht3x
 
@@ -118,7 +118,7 @@ print("humidity is ", humi, "%H")
 ```
 
 * 输出：
-```
+```log
 humidity is 60%H
 ```
 
@@ -138,7 +138,7 @@ humidity is 60%H
 
 * 示例：
 
-```Python
+```python
 import I2C
 import sht3x
 # 初始化I2C类型的设备
@@ -154,7 +154,7 @@ print("humidity is ", data[1], "%H")
 ```
 
 * 输出：
-```
+```log
 temperature is 25.3°C
 humidity is 60%H
 ```
@@ -163,7 +163,7 @@ humidity is 60%H
 此使用实例在board.json中定义了名为sht3x的I2C类型的对象。在Python脚本中周期性的获取温湿度测量结果并打印在日志中。
 
 * 代码：
-```Python
+```python
 # board.json配置：
 {
     "name": "board-name",
@@ -183,7 +183,7 @@ humidity is 60%H
 }
 
 ```
-```Python
+```python
 # Python代码
 import utime                         # 延时API所在组件
 from driver import I2C               # 驱动库
@@ -221,7 +221,7 @@ if __name__ == '__main__':
 ```
 
 * 输出：
-```Python
+```python
 ...
 The temperature is 25.3°C
 The humidity is 60%H
@@ -250,7 +250,7 @@ The humidity is 60%H
 |10|0x240B|中频率周期性测量|CMD_MEAS_POLLING_M|
 |11|0x2416|低频率周期性测量|CMD_MEAS_POLLING_L|
 
-实际控制此传感器的流程可参考如下伪代码。 
+实际控制此传感器的流程可参考如下伪代码。
 </br>
 
 * 初始化传感器并开始进行温湿度测量
@@ -282,10 +282,37 @@ The humidity is 60%H
 
 ## 六、工作原理
 
+&emsp;&emsp;
+从下图可以看到SHT3x内部集成了湿度传感器和温度传感器，支持两种通信方式。<br>
+通过ADC采样输入到数据处理和线性化单元，同时带有校正储存器，处理环境对器件测量的影响。<br>
+通过数字接口IIC读取数据。带警报引脚，可通过修改寄存器的值设定阈值，当测量的温湿度超过阈值时它会被置位。<br>
 <div align="center">
-<img src=./../../../图片/ext_sht3x-dis_工作原理.png  width=100%/>
+<img src=./../../../图片/ext_sht3x-dis_工作原理.png  width=50%/>
 </div>
 
+引脚分布如下，<br>
+1和4号脚是IIC总线接口；<br>
+2号脚是决定地址的引脚，当ADDR接VSS时芯片地址为0x44，接VCC时芯片地址为0x45；<br>
+3号脚警报引脚（当不使用时浮空），当温湿度超过设定的阈值则该脚会被置位；<br>
+5号和8号脚是电源引脚；<br>
+6号引脚是复位引脚（当不使用时接VDD），低电平有效；<br>
+7号脚是为了封装而保留的引脚。<br>
+ <div align="center">
+<img src=./../../../图片/ext_sht3x-dis_pin.png  width=50%/>
+ </div>
 
-## 参考文献
-[1] [SHT3X-DIS温湿度传感器](https://www.mouser.cn/new/sensirion/sensirion-sht3x-dis-sensors/)
+下图是设备地址分配情况.
+<div align="center">
+<img src=./../../../图片/ext_sht3x-dis_address.png  width=50%/>
+</div>
+&emsp;&emsp;
+典型电路如下，由于SCL和SDA为开漏输出，驱动能力不足，需要接上拉电阻。VDD和VSS之间接一个小电容滤除高频杂波，另外nRESET和ALERT根据情况进行选择，若不需要使用，nRESET接高电平，ALERT浮空。Die Pad接地即可。
+
+<div align="center">
+<img src=./../../../图片/ext_sht3x-dis_apply.png  width=50%/>
+</div>
+
+ ## 参考文献
+-[1] [SHT3X-DIS温湿度传感器](https://www.mouser.cn/new/sensirion/sensirion-sht3x-dis-sensors/)<br>
+[2] [SHT3x-DIS驱动及应用详解](https://blog.csdn.net/qq_33194301/article/details/103652311)
+

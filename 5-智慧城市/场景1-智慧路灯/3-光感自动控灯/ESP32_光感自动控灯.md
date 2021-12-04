@@ -1,6 +1,6 @@
 > **学习物联网，来HaaSEDU就对了**
 
-# HaaS EDU K1光感自动控灯
+# ESP32光感自动控灯
 
 ## 硬件连线图
 
@@ -78,23 +78,25 @@
 </div>
 
 &emsp;&emsp;
-如下图设置对应产品的物模型，分别设置光强度和灯开关两个模型，
+如下图设置对应产品的物模型，分别设置光强度电压值和灯开关两个模型，
 <div align="center">
-<img src=./../../../图片/5_1_产品物模型.jpg
+<img src=./../../../图片/5_1_2产品物模型.jpg
+ width=40%/>
+ <img src=./../../../图片/5_1_3产品物模型onoff.jpg
  width=40%/>
 </div>
 
 &emsp;&emsp;
-在产品详情中增加产品的功能，可以看到刚才设置的光强度和开关两个功能属性，点击发布上线。
+在产品详情中增加产品的功能，可以看到刚才设置的光强度电压值和灯开关两个功能属性，点击发布上线。
 <div align="center">
-<img src=./../../../图片/5_1_完成物模型设置.jpg
- width=40%/>
+<img src=./../../../图片/5_1_3完成物模型设置.jpg
+ width=80%/>
 </div>
 
 &emsp;&emsp;
-这样，整个智慧路灯产品在物联网平台就创建好了。
+这样，整个智慧路灯产品在物联网平台也创建好了。
 
-3. **设备管理**
+1. **设备管理**
 
 &emsp;&emsp;
 选中最左边栏设备管理中的设备，然后添加设备，
@@ -127,31 +129,31 @@
 4. **设备引擎**
 
 &emsp;&emsp;
-如何通过光感自适应控制灯的亮灭，在物联网平台上通过引擎规则实现。
+如何通过光感自适应控制灯的亮灭呢？可以在物联网平台上通过引擎规则实现，本课程使用的光敏电阻传感器测的光强度电压值越高，说明周围的环境越暗；反之，测得的光强度电压值越低，说明周围的环境越亮。
 <div align="center">
 <img src=./../../../图片/5_1_规则引擎1.jpg
- width=40%/>
+ width=70%/>
 </div>
 
 &emsp;&emsp;
-当光强度大于1000，执行开灯的指令
+当光强度电压值大于1000，说明周围的环境变暗，执行开灯的指令
 <div align="center">
-<img src=./../../../图片/5_1_规则引擎2.jpg
- width=40%/>
+<img src=./../../../图片/5_1_3规则引擎2.jpg
+ width=70%/>
 </div>
 
 &emsp;&emsp;
-当光强度小于1000，执行关灯的指令
+当光强度电压值小于1000，说明周围的环境变亮，执行关灯的指令
 <div align="center">
-<img src=./../../../图片/5_1_规则引擎3.jpg
- width=40%/>
+<img src=./../../../图片/5_1_3规则引擎3.jpg
+ width=70%/>
 </div>
 
 &emsp;&emsp;
 规则引擎创建完成以后，启动引擎即可。
 <div align="center">
-<img src=./../../../图片/5_1_规则引擎4.jpg
- width=40%/>
+<img src=./../../../图片/5_1_3规则引擎4.jpg
+ width=70%/>
 </div>
 
 ### 设备端代码
@@ -164,7 +166,7 @@
 &emsp;&emsp;
 修改light_smart工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # wifi连接的的ssid和pwd定义
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"
@@ -183,7 +185,7 @@ wifiPassword = "请填写您的路由器密码"
  width=40%/>
 </div>
 
-```
+```python
 # 物联网平台相关的key和serect定义
 productKey     = "产品密钥"
 deviceName     = "设备名"
@@ -195,7 +197,7 @@ deviceSecret   = "设备密钥"
 &emsp;&emsp;
 light_smart工程里main.py中下面的代码实现的是上传光强度值到云端的功能，以及云端下发对应的开关命令。其中Brightness便是光强度值上报时所用的标识符，onoff为云端下发的开关标识符。
 
-```
+```python
 def report_light_data(l_data):
     # 生成上报到物联网平台的属性值字串
     upload_data = {'params': ujson.dumps({
@@ -208,7 +210,7 @@ def report_light_data(l_data):
 
 &emsp;&emsp;
 下面是采集光照数据的时候，采样值是跨阈值1000就需要进行上报。
-```
+```python
 # 采集打印光照强度电压值
 def show_lightness():
     global lightness,i_light,last_light,system_reset
@@ -238,12 +240,12 @@ def show_lightness():
 
 &emsp;&emsp;
 处理物联网平台过来的数据。
-```
+```python
 # 设置props 事件接收函数（当云平台向设备下发属性时）
 def on_props(request):
     global alarm_on, device
     print(request)
-    payload = ujson.loads(request)
+    payload = ujson.loads(request['params'])
 
     # 获取dict状态字段 注意要验证键存在 否则会抛出异常
     if "onoff" in payload.keys():
@@ -277,7 +279,7 @@ def on_props(request):
 
 &emsp;&emsp;
 推送此脚本到ESP32之后，设备上打印光强度值，同时将相关的光强度值上传到云端，并且当光强度大于1000，打开LED灯；当光强度小于1000，关闭LED绿灯，如下日志所示：
-```
+```log
 >>> execfile("/data/pyamp/main.py")
 wifi_connected: False
 wifi_connected: False

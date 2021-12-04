@@ -34,7 +34,7 @@
 1. **修改设备端上报数据所用标识符**
 
 gas_detector工程里app.js中下面的代码实现的是上传燃气检测结果和报警灯状态到云端的功能。其中gasVoltate便是燃气检测结果上报云端所用的标识符。
-```
+```python
     // 生成上报到物联网平台的属性值字串，此处的属性标识符"gasVoltage"和"alarmLight"必须和物联网平台的属性一致
    iotdev.postProps(
        JSON.stringify({
@@ -60,7 +60,7 @@ gas_detector工程里app.js中下面的代码实现的是上传燃气检测结�
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会周期性的打印如下日志：
 
-```
+```log
 gasVoltage: 852 alarmOn: 1
 <D>[ADC](93) adc value: 426
 

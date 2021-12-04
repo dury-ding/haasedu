@@ -34,7 +34,7 @@
 1. **修改设备端上报数据所用标识符**
 
 human_detector_js工程里app.js中下面的代码实现的是上传LED灯状态到云端的功能。其中LEDSwitch便是LED灯状态上报云端所用的标识符。
-```
+```python
 
 		// 生成上报到物联网平台的属性值字串，此处的属性标识符"LEDSwitch"必须和物联网平台的属性一致
 		iotdev.postProps(
@@ -54,7 +54,7 @@ human_detector_js工程里app.js中下面的代码实现的是上传LED灯状态
 &emsp;&emsp;
 推送此脚本到HaaS600之后，串口会周期性的打印如下日志：
 
-```
+```log
 gpio: led set value 1
 gpio: led set value 0
 gpio: led set value 1

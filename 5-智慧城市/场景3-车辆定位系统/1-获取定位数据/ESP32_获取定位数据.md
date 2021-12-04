@@ -90,7 +90,7 @@
 设定好工程名称及工作区路径之后，硬件类型选择ESP32，点击立即创建，创建一个Python轻应用的解决方案。
 
 &emsp;&emsp;
-将获取定位数据的全部文件（[main.py](./代码/ESP32/Python/main.py), [micropyGNSS.py](./代码/ESP32/Python/micropyGNSS.py)）复制后覆盖刚刚创建的工程目录（your_project_path/solutions/your_project_name）下，替换原有的main.py。如下图所示：
+将获取定位数据的全部[代码](./代码/ESP32/Python/)文件复制后，覆盖刚刚创建的gnss工程目录下。main.py代码区如下图所示：
 <div align="center">
 <img src=./../../../图片/5_3_Python工程复制脚本_esp32.jpg width=100%/>
 </div>
@@ -106,7 +106,7 @@
 **GNSS定位模块在定位时，需要花费一定时间去搜索可用的卫星，因此建议读者们将定位模块放置于户外或靠近窗户的地方。**
 完成定位后，串口会周期性的打印定位模块输出的原始语句以及解析出的定位信息。
 
-```
+```log
 ************* python task init*******
 mount fs
  ==== python file check /data/pyamp/main.py ====
