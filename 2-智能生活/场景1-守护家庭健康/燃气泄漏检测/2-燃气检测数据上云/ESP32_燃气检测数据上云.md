@@ -45,7 +45,7 @@ deviceSecret = "设备密钥"
 gas_detector工程里main.py中下面的代码实现的是上传燃气检测结果和报警灯状态到云端的功能。其中gasVoltate便是燃气检测结果上报云端所用的标识符。代码逻辑及功能说明如下：
 
 ```python
-# 上传温度信息和湿度信息到物联网平台
+# 上传燃气传感器测量结果和报警灯状态到物联网平台
 def upload_gas_detector_state():
     global device, alarmOn, mq2Dev
 
@@ -64,8 +64,8 @@ def upload_gas_detector_state():
         # "gasVoltage" - 代表燃气传感器测量到的电压值
         # "alarmLight" - 代表报警灯的当前状态
         uploadData = {'params': data}
-        # 上传温度和湿度信息到物联网平台
 
+        # 上传燃气传感器测量结果和报警灯状态到物联网平台
         device.postProps(uploadData)
 
         # 每2秒钟上报一次
