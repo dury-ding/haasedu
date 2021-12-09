@@ -162,7 +162,7 @@ if __name__ == '__main__':
 
     # 初始化LED所连接GPIO
     ledDev = GPIO()
-    ledDev.open("led")
+    ledDev.open("led") 
     alarm_control(alarm_on)         # 关闭报警灯
 
     wlan = network.WLAN(network.STA_IF)    #创建WLAN对象
