@@ -26,9 +26,9 @@ if __name__ == '__main__':
     adcDev.open("fire")
     fireDev = fire.Fire(adcDev)
 
-    # 初始化红色LED所连接GPIO
+    # 初始化LED所连接GPIO
     ledDev = GPIO()
-    ledDev.open("led_r") 
+    ledDev.open("led") 
     
 
     # 初始化 GPIO
