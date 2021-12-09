@@ -103,7 +103,7 @@ def connect_lk(productKey, deviceName, deviceSecret):
     print('sleep for 2s')
     utime.sleep(2)
 
-# 上传温度信息和湿度信息到物联网平台
+# 上传甲醛浓度信息到物联网平台
 def upload_hcho_detector_state():
     global device
     # 无限循环
@@ -117,6 +117,7 @@ def upload_hcho_detector_state():
             'HCHO': round(data,2),
         })
         }
+
         # 上传甲醛浓度信息到物联网平台
         device.postProps(upload_data)
 

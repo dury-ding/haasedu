@@ -144,7 +144,7 @@ def upload_fire_detector_state():
             'alarmState': alarm_on
         })
         }
-        # 上传温度和湿度信息到物联网平台
+        # 上传火焰传感器测量结果和报警灯状态到物联网平台
         device.postProps(upload_data)
 
         # 每2秒钟上报一次
@@ -162,7 +162,7 @@ if __name__ == '__main__':
 
     # 初始化LED所连接GPIO
     ledDev = GPIO()
-    ledDev.open("led") 
+    ledDev.open("led")
     alarm_control(alarm_on)         # 关闭报警灯
 
     wlan = network.WLAN(network.STA_IF)    #创建WLAN对象
@@ -174,3 +174,4 @@ if __name__ == '__main__':
 
     adcDev.close()
     ledDev.close()
+
