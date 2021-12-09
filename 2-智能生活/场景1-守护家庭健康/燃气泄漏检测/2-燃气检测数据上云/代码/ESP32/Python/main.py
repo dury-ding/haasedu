@@ -135,7 +135,7 @@ def led_control(on):
         alarmLed.write(1)  # GPIO写入 1，执行亮灯报警动作
 
 
-# 上传温度信息和湿度信息到物联网平台
+# 上传燃气传感器测量结果和报警灯状态到物联网平台
 def upload_gas_detector_state():
     global device, alarmOn, mq2Dev
 
@@ -155,8 +155,8 @@ def upload_gas_detector_state():
         # "alarmLight" - 代表报警灯的当前状态
         print('reporting data to cloud:', data)
         uploadData = {'params': data}
-        # 上传温度和湿度信息到物联网平台
 
+        # 上传燃气传感器测量结果和报警灯状态到物联网平台
         device.postProps(uploadData)
 
         # 每2秒钟上报一次
