@@ -160,9 +160,9 @@ if __name__ == '__main__':
     adcDev.open("fire")
     fireDev = fire.Fire(adcDev)
 
-    # 初始化红色LED所连接GPIO
+    # 初始化LED所连接GPIO
     ledDev = GPIO()
-    ledDev.open("led_r") 
+    ledDev.open("led")
     alarm_control(alarm_on)         # 关闭报警灯
 
     wlan = network.WLAN(network.STA_IF)    #创建WLAN对象
@@ -174,3 +174,4 @@ if __name__ == '__main__':
 
     adcDev.close()
     ledDev.close()
+
