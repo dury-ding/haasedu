@@ -144,7 +144,7 @@ def upload_fire_detector_state():
             'alarmState': alarm_on
         })
         }
-        # 上传温度和湿度信息到物联网平台
+        # 上传火焰传感器测量结果和报警灯状态到物联网平台
         device.postProps(upload_data)
 
         # 每2秒钟上报一次
