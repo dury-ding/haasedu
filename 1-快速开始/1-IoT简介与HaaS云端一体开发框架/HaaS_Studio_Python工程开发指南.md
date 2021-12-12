@@ -18,7 +18,7 @@
 </div>
 
 &emsp;&emsp;
-根据创建工程向导，开发者输入/选择相关的信息即可。下面以在ESP32上面创建hellworld示例程序为例演示工程进行，步骤如下:
+根据创建工程向导，开发者输入/选择相关的信息即可。下面以在NodeMCU-32S上面创建hellworld示例程序为例演示工程进行，步骤如下:
 > 注意事项： 文件夹不要有中文，空格及其他异常字符。
 
 1. 输入项目名称
@@ -45,60 +45,34 @@
 * [HaaS EDU K1 固件烧录](./HaaS_EDU_K1_固件烧录.md)
 * [ESP32 固件烧录](./ESP32_固件烧录.md)
 
-&emsp;&emsp;
-将此Python工程目录下的文件推送到设备端。Python轻应用脚本推送到设备端有两种推送方式可以选择。
-* 串口本地更新
-* 云端在线更新
 
 &emsp;&emsp;
-本文则只介绍“本地更新”的方式，在执行下面操作之前请确保：
+本文在推送脚本之前请确保：
+* ESP32
+  * ESP32通过数据线连接到电脑的USB口
 * HaaS EDU K1
   * HaaS EDU K1通过Type-C的数据线连接到电脑的USB口
   * HaaS EDU K1左侧的电源拨码开关已经处于开启的状态
-* ESP32
-  * ESP32通过数据线连接到电脑的USB口
 
 &emsp;&emsp;
-“本地更新”需要如下4步完成脚本下载。
+点击HaaS-Studio的“部署运行”按钮（<img src=./../../图片/1_HaaS_Studio_部署运行.png width=5%/>），HaaS-Studio会将脚本推送到开发板上。
 
 &emsp;&emsp;
+烧录过程中需要重启设备。
+
+* NodeMCU-32S
+
 &emsp;&emsp;
-点击HaaS-Studio的“部署运行”按钮（(<img src=./../../图片/1_HaaS_Studio_部署运行.png width=5%/>)），系统会弹出如下的窗口让开发者选择。
-1. 选择“本地更新”
+工具会控制ESP32自动重启，开发者无需操作。
 
-<div align="center">
-<img src=./../../图片/1_HaaS_Studio_Python_选择本地更新.png width=70%/>
-</div>
-
-2. 选择串口设备
-
-<div align="center">
-<img src=./../../图片/1_HaaS_Studio_Python_选择烧录串口.png width=70%/>
-</div>
-
-> 注意：每台设备的串口名称都不一样，上图串口名称是笔者电脑上显示的串口名称，请读者确认自己根据自己开发环境的实际情况选择合适的串口。
-
-3. 选择串口波特率
-* HaaS EDU K1
-  * 请选择1500000
-* ESP32
-  * 请选择115200
-<div align="center">
-<img src=./../../图片/1_HaaS_Studio_Python_选择串口波特率.png width=70%/>
-</div>
-
-4. 重启设备
 * HaaS EDU K1
 
 &emsp;&emsp;
-选择好波特率之后系统会弹出如下提示框及输出信息。请读者重启设备（在HaaS EDU K1上按一下屏幕旁边的小按钮即可）。
+系统会弹出如下提示框及输出信息。请读者重启设备（在HaaS EDU K1上按一下屏幕旁边的小按钮即可）。
 <div align="center">
 <img src=./../../图片/1_HaaS_Studio_Python_重启设备提示.png width=70%/>
 </div>
 
-* ESP32
-&emsp;&emsp;   
-工具会控制ESP32自动重启，开发者无需操作。
 
 &emsp;&emsp;
 脚本下载完成后，系统会有如下提示：
@@ -111,3 +85,20 @@ Ymodem transfer file finish
 ```log
 upload success
 ```
+
+
+&emsp;&emsp;
+如果`推送不成功`请点击下面"推送失败的解决方案"按钮查看解决方法。
+<details>
+<summary>推送失败的解决方案</summary>
+&emsp;&emsp;
+一般情况下，推送失败是因为电脑上外接了多个USB转串口的设备导致的。此时，VS Code的命令行中会列出系统的串口列表，需要您在命令行中敲入ESP32串口名称（前面“ESP32串口名称确认”步骤中有说明）对应的序号之后敲回车。如下图所示：
+
+<div align="center">
+<img src=./../../图片/1_HaaS_Studio_选择串口序号.png width=150%/>
+</div>
+
+&emsp;&emsp;
+如果选择了串口仍然推送失败，请联系HaaS小二解决推送问题。
+
+</details>
