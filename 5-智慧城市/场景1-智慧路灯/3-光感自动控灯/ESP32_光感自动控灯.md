@@ -270,7 +270,7 @@ def on_props(request):
 确保Brightness和onoff两个标识符和物联网产品的物模型中属性标识符是一样的，如下图所示：
 <div align="center">
 <img src=./../../../图片/5_1_完成物模型设置.jpg
- width=40%/>
+ width=80%/>
 </div>
 
 <br>
@@ -318,7 +318,7 @@ no need report
 暂无
 <br>
 
-> 关于ESP32的详细信息请参考[ESP32开发板介绍](../../../拓展知识/HaaS硬件积木库/ESP32开发板/ESP32.md)。
+> 关于ESP32的详细信息请参考[ESP32开发板介绍](../../../拓展知识/HaaS硬件积木库/ESP32开发板/README.md)。
 
 <br>
 

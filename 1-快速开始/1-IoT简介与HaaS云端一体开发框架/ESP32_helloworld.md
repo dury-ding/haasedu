@@ -40,7 +40,7 @@ import utime   # 延时函数在utime库中
 
 if __name__ == '__main__':
     while True:             # 无限循环
-        print("hellworld")  # 打印"helloworld"字串到console中
+        print("helloworld")  # 打印"helloworld"字串到console中
         utime.sleep(1)      # 打印完之后休眠1秒
 ```
 
