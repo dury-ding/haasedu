@@ -40,4 +40,3 @@ if __name__ == '__main__':
         alarm_control(alarm)         # 控制LED状态反转
     adcDev.close()
     ledDev.close()
-
