@@ -95,6 +95,6 @@ The lightness is:  585
 <br>
 <br>
 
-> 关于ESP32的详细信息请参考[ESP32开发板介绍](../../../拓展知识/HaaS硬件积木库/ESP32开发板/ESP32.md)。
+> 关于ESP32的详细信息请参考[ESP32开发板介绍](../../../拓展知识/HaaS硬件积木库/ESP32开发板/README.md)。
 
 <br>

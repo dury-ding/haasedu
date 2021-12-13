@@ -106,8 +106,10 @@ success to establish tcp, fd=54
 sleep for 2s
 reporting data to cloud: {"gasVoltage": 1100, "alarmLight": 0}
 {"alarmLight":1}
-reporting data to cloud: {"gasVoltage": 1100, "alarmLight": 0}
+开始报警
+reporting data to cloud: {"gasVoltage": 1100, "alarmLight": 1}
 {"alarmLight":1}
+开始报警
 ...
 
 ```
