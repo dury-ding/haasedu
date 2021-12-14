@@ -43,6 +43,7 @@ wifiPassword = "请输入您的路由器密码"
 
 &emsp;&emsp;
 human_detector工程里main.py中下面的代码实现的是上传起夜灯状态到云端的功能，其中LEDSwitch便是起夜灯状态上报云端所用的标识符。
+
 ```python
 while True :
     have_human = irDev.irDetect()   # 获取传感器的值
