@@ -15,7 +15,7 @@
 硬件连线图如下图所示：
 
 <div align="center">
-<img src=./../../../图片/1_ESP32_SHT3X_DIS_RGB_LED_节点图.png width=100%/>
+<img src=./../../../图片/1_ESP32_SHT3X_DIS_RGB_LED_节点图.jpg width=100%/>
 </div>
 
 <br>

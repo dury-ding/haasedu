@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     # 初始化LED所连接GPIO
     ledDev = GPIO()
-    ledDev.open("led") 
+    ledDev.open("led")
     
 
     # 初始化 GPIO

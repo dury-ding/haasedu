@@ -35,8 +35,7 @@ wifiPassword = "请填写您的路由器密码"
 修改fire_detector工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
 
 <div align="center">
-<img src=./../../../图片/4_火焰监控系统_修改设备端三元组信息_esp32.jpg
- width=40%/>
+<img src=./../../../图片/4_火焰监控系统_修改设备端三元组信息_esp32.jpg width=40%/>
 </div>
 
 1. **修改设备端上报数据所用标识符**

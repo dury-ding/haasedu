@@ -251,10 +251,10 @@ def on_props(request):
     if "onoff" in payload.keys():
         alarm_on = payload["onoff"]
         if (alarm_on):
-            print("开始报警")
+            print("开灯")
             ledOn()
         else:
-            print("结束报警")
+            print("关灯")
             ledOff()
 
     # 要将更改后的状态同步上报到云平台
@@ -262,7 +262,7 @@ def on_props(request):
         'onoff': alarm_on,
     })
     }
-    # 上报本地报警灯状态到云端
+    # 上报本地灯的状态到云端
     device.postProps(upload_data)
 ```
 
@@ -278,7 +278,7 @@ def on_props(request):
 ## 推送脚本并运行
 
 &emsp;&emsp;
-推送此脚本到ESP32之后，设备上打印光强度值，同时将相关的光强度值上传到云端，并且当光强度大于1000，打开LED灯；当光强度小于1000，关闭LED绿灯，如下日志所示：
+推送此脚本到ESP32之后，设备上打印光强度值，同时将相关的光强度值上传到云端，并且当光强度大于1000，打开LED灯；当光强度小于1000，关闭LED灯，如下日志所示：
 ```log
 >>> execfile("/data/pyamp/main.py")
 wifi_connected: False
