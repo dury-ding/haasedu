@@ -9,11 +9,13 @@
 3. 创建云端设备（获取三元组）
 4. 物联网设备端配置
 
+> 在创建云端产品前，请确保您已经开通“物联网平台公共实例”功能，开通方法请参考[物联网设备上云](./../../../1-快速开始/3-物联网设备上云/README.md)中“开通公共实例”小节的描述。
+
 <br>
 
 ## 创建云端产品
 &emsp;&emsp;
-创建云端产品的网址：https://iot.console.aliyun.com/product  
+创建云端产品的网址：https://iot.console.aliyun.com/product
 
 &emsp;&emsp;
 点击创建产品按钮，如下图所示。
