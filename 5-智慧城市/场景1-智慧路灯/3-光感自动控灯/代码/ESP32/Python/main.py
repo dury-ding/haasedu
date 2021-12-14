@@ -29,7 +29,7 @@ wlan = None
 # 物联网设备实例
 device = None
 
-# EDU K1上灯的初始化
+# LED灯的初始化
 def ledInit():
     global ledDev
     ledDev = GPIO()
@@ -125,10 +125,10 @@ def on_props(request):
     if "onoff" in payload.keys():
         alarm_on = payload["onoff"]
         if (alarm_on):
-            print("开始报警")
+            print("开灯")
             ledOn()
         else:
-            print("结束报警")
+            print("关灯")
             ledOff()
 
     # 要将更改后的状态同步上报到云平台
@@ -136,7 +136,7 @@ def on_props(request):
         'onoff': alarm_on,
     })
     }
-    # 上报本地报警灯状态到云端
+    # 上报本地灯的状态到云端
     device.postProps(upload_data)
 
 # 连接物联网平台
