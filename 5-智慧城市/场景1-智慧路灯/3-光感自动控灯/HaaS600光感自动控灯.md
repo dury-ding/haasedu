@@ -125,7 +125,7 @@
 进入设备详情，获取设备三元组信息，
 <div align="center">
 <img src=./../../../图片/5_1_设备三元组信息.jpg
- width=40%/>
+ width=60%/>
 </div>
 
 &emsp;&emsp;
@@ -141,28 +141,28 @@
 如何通过光感自适应控制灯的亮灭，在物联网平台上通过引擎规则实现。
 <div align="center">
 <img src=./../../../图片/5_1_规则引擎1.jpg
- width=40%/>
+ width=60%/>
 </div>
 
 &emsp;&emsp;
 当光照传感器值大于800，执行关灯的指令
 <div align="center">
 <img src=./../../../图片/5_1_规则引擎2_js.jpg
- width=40%/>
+ width=80%/>
 </div>
 
 &emsp;&emsp;
 当光照传感器值小于800，执行开灯的指令
 <div align="center">
 <img src=./../../../图片/5_1_规则引擎3_js.jpg
- width=40%/>
+ width=80%/>
 </div>
 
 &emsp;&emsp;
 规则引擎创建完成以后，启动引擎即可。
 <div align="center">
-<img src=./../../../图片/5_1_规则引擎4.jpg
- width=40%/>
+<img src=./../../../图片/5_1_3规则引擎4.jpg
+ width=80%/>
 </div>
 
 ### 设备端代码
