@@ -1,9 +1,11 @@
 > **学习物联网，来HaaSEDU就对了** 
 
 # 创建hellworld工程
-本节主要介绍如何通过HaaS-Studio IDE创建hellwoorld工程并完成程序下载。
+&emsp;&emsp;
+本节主要介绍如何通过HaaS-Studio IDE创建基于HaaS EDU K1的hellwoorld工程并完成程序下载及运行。
 
 ## 硬件连线图
+&emsp;&emsp;
 本实验只需要一台HaaS EDU K1即可，无需外接其它设备。
 
 ## 开发环境
@@ -18,10 +20,10 @@
 ## 创建helloworld解决方案
 
 &emsp;&emsp;
-如下图所示，打开VS Code之后在新建一个基于helloworld的Python案例，硬件类型选择HaaS EDU K1，设定好工程名称及工作区路径之后，点击立即创建，创建一个Python轻应用的解决方案。详细过程请参考[HaaS Studio Python工程开发指南](./HaaS_Studio_Python工程开发指南.md)中“创建工程”的详细说明。
+打开VS Code之后在新建一个基于helloworld的Python案例，硬件类型选择HaaS EDU K1，设定好工程名称及工作区路径之后，点击立即创建，创建一个Python轻应用的解决方案。详细过程请参考[HaaS Studio Python工程开发指南](./HaaS_Studio_Python工程开发指南.md)中“创建工程”的详细说明。
 
 &emsp;&emsp;
-helloworld工程中脚本（main.py）内容如下：
+helloworld工程中脚本 - main.py内容如下：
 
 ```python
 #!/usr/bin/env python
@@ -38,7 +40,7 @@ import utime   # 延时函数在utime库中
 
 if __name__ == '__main__':
     while True:             # 无限循环
-        print("hellworld")  # 打印"helloworld"字串到console中
+        print("helloworld")  # 打印"helloworld"字串到console中
         utime.sleep(1)      # 打印完之后休眠1秒
 ```
 
@@ -59,12 +61,4 @@ helloworld
 helloworld
 ...
 ```
-
-&emsp;&emsp;
-实际运行效果如下图所示：
-
-<div align="center">
-<img src=./../../图片/1_helloworld_日志.gif width=100%/>
-</div>
-
 

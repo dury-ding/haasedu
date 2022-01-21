@@ -64,7 +64,7 @@ wifiPassword = "请填写您的路由器密码"
 2. **修改设备端三元组**
 
 &emsp;&emsp;
-修改humiture工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
+修改humiture工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息。
 ```python
 # 三元组信息
 productKey = "产品密钥"
@@ -98,8 +98,8 @@ def upload_temperature_and_Humidity():
 &emsp;&emsp;
 确保这两个标识符和物联网产品的物模型中属性标识符是一样的，如下图所示：
 <div align="center">
-<img src=./../../图片/1_ESP32_humiture_属性标识符修改.png
- width=40%/>
+<img src=./../../图片/1_humiture_属性标识符修改.png
+ width=80%/>
 </div>
 
 ## 推送脚本到ESP32并运行
@@ -121,7 +121,7 @@ wifi_connected: False
 wifi_connected: False
 ('172.20.10.2', '255.255.255.240', '172.20.10.1', '172.20.10.1')
 sleep for 1 s
-establish tcp connection with server(host='a158sBmxLet.iot-as-mqtt.cn-shanghai.aliyuncs.com', port=[443])
+...
 tcp_connect: can only connect from state CLOSED
 success to establish tcp, fd=54
 物联网平台连接成功
