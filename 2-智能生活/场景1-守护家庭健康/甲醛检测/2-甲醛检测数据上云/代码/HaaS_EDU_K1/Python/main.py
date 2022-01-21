@@ -52,7 +52,7 @@ def get_wifi_status():
             break
       else:
             wifi_connected = nm.getStatus() # 获取Wi-Fi连接路由器的状态信息
-            time.sleep(0.5)
+            utime.sleep(0.5)
             print("wifi_connected: " , wifi_connected)
 
    print("Wi-Fi connected")
