@@ -36,37 +36,43 @@
         <th>-</th>
     </tr>
     <tr>
-        <th rowspan="3">智能生活</th>
+        <th rowspan="4">智能生活</th>
         <th><a href="./2-智能生活/场景1-守护家庭健康/甲醛检测/">守护家庭健康之甲醛监控系统</a></th>
         <th>学习如何通过传感器对家庭的甲醛浓度进行实时监测</th>
         <th><a href="2-智能生活/场景1-守护家庭健康/甲醛检测/README.md">守护家庭监控-甲醛监控系统</a></th>
-        <th>ESP32</th>
+        <th>ESP32<br>HaaS EDU K1</th>
     </tr>
     <tr>
         <th><a href="2-智能生活/场景1-守护家庭健康/燃气泄漏检测">守护家庭健康之燃气泄漏系统</a></th>
         <th>如何通过传感器监控家庭中的燃气浓度，并在燃气浓度过高时报警</th>
         <th><a href="2-智能生活/场景1-守护家庭健康/燃气泄漏检测/README.md">守护家庭监控-燃气泄漏检测</a></th>
-        <th>ESP32</th>
+        <th>ESP32<br>HaaS EDU K1</th>
     </tr>
     <tr>
         <th><a href="2-智能生活/场景2-起夜灯">起夜灯</a></th>
         <th>学习如何通过人体检测传感器进行人体检测以及控制夜灯的开关</th>
         <th><a href="2-智能生活/场景2-起夜灯/README.md">起夜灯</a></th>
-        <th>ESP32</th>
+        <th>ESP32<br>HaaS EDU K1</th>
+    </tr>
+    <tr>
+        <th><a href="2-智能生活/场景3-番茄时钟">番茄时钟</a></th>
+        <th>学习如何实现自己的番茄时钟</th>
+        <th><a href="2-智能生活/场景3-番茄时钟/README.md">番茄时钟</a></th>
+        <th>HaaS EDU K1</th>
     </tr>
     <tr>
         <th rowspan="1">智慧农业</th>
         <th><a href="./3-智慧农业/场景1-花卉养植">花卉养植系统</a></th>
         <th>学习如果通过温湿度传感器监控环境温湿度、自动浇花系统以及如何远程查看花卉系统的状态信息</th>
         <th><a href="3-智慧农业/场景1-花卉养植/README.md">花卉养植</a></th>
-        <th>ESP32</th>
+        <th>ESP32<br>HaaS EDU K1</th>
     </tr>
     <tr>
         <th rowspan="1">智慧工业</th>
         <th><a href="./4-智慧工业/场景1-火焰监控报警系统">火焰监控报警系统</a></th>
         <th>学习如何通过火焰传感器实时监控工业锅炉中燃料燃烧状态是否正常，并在检测到燃料熄灭之后自动报警</th>
         <th><a href="4-智慧工业/场景1-火焰监控报警系统/README.md">火焰监控报警系统</a></th>
-        <th>ESP32</th>
+        <th>ESP32<br>HaaS EDU K1</th>
     </tr>
     <tr>
         <th rowspan="2">智慧城市</th>
