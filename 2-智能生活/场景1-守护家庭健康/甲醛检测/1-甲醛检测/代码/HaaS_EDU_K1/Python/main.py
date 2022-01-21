@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 import hcho
-import time                 # 延时API所在组件
+import utime                 # 延时API所在组件
 from driver import ADC      # ADC类，通过微处理器的ADC模块读取ADC通道输入电压
 
 adcObj = 0                     # ADC通道对象
@@ -25,7 +25,7 @@ def get_and_show_hcho():
         data = get_hcho_value()
         H_str = "Hcho : " + str(round(data,2))+'ppm'
         print('Hcho :' + str(round(data,2)) +'ppm')
-        time.sleep(2)
+        utime.sleep(2)
 
 
 if __name__ == '__main__':

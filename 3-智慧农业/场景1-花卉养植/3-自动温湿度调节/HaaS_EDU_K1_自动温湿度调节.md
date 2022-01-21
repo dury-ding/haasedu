@@ -62,7 +62,7 @@ humiture工程里main.py中下面的代码实现的是上传温湿度值到云�
     }
     # 上传温度和湿度信息到物联网平台
     device.postProps(upload_data)
-    time.sleep(2)
+    utime.sleep(2)
 ```
 
 &emsp;&emsp;
