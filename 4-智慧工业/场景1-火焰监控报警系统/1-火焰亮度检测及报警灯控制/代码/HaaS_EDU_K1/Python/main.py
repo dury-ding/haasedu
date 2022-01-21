@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-import time                 # 延时API所在组件
+import utime                 # 延时API所在组件
 import fire
 from driver import ADC      # ADC类，通过微处理器的ADC模块读取ADC通道输入电压
 from driver import GPIO     # GPIO类，用于控制微处理器的输入输出功能
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     while True:
         value = fireDev.getVoltage()   # 获取电压值
         print("The fire status Voltage ",value)
-        time.sleep(1)                # 休眠1秒
+        utime.sleep(1)                # 休眠1秒
         alarm = 1 - alarm            # LED输出反转
         alarm_control(alarm)         # 控制LED状态反转
     adcDev.close()
