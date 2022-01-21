@@ -54,7 +54,7 @@ humiture工程里app.js中下面的代码实现的是上传温湿度值到云端
 &emsp;&emsp;
 确保这两个标识符和物联网产品的物模型中属性标识符是一样的，如下图所示：
 <div align="center">
-<img src=./../../../图片/1_HaaS_EDU_K1_humiture_属性标识符修改.png
+<img src=./../../../图片/1_humiture_属性标识符修改.png
  width=40%/>
 </div>
 

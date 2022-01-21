@@ -38,7 +38,7 @@ wifiPassword = "请填写您的路由器密码"
 <img src=./../../../图片/4_火焰监控系统_修改设备端三元组信息_esp32.jpg width=40%/>
 </div>
 
-1. **修改设备端上报数据所用标识符**
+3. **修改设备端上报数据所用标识符**
 
 &emsp;&emsp;
 fire_detector工程里main.py中下面的代码实现的是上传火焰检测结果和报警灯状态到云端的功能。其中fireVoltage便是火焰检测结果上报云端所用的标识符。
@@ -89,7 +89,7 @@ wifi_connected: False
 wifi_connected: False
 ('192.168.0.105', '255.255.255.0', '192.168.0.1', '192.168.0.1')
 sleep for 1 s
-establish tcp connection with server(host='a1vyxFfriEF.iot-as-mqtt.cn-shanghai.aliyuncs.com', port=[443])
+...
 tcp_connect: can only connect from state CLOSED
 success to establish tcp, fd=54
 物联网平台连接成功

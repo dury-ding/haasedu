@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from aliyunIoT import Device     # iot组件是连接阿里云物联网平台的组件
+from aliyunIoT import Device     # aliyunIoT组件是连接阿里云物联网平台的组件
 import network                   # Wi-Fi功能所在库
 import utime                     # 延时API所在组件
 import ujson                     # json字串解析库

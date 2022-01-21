@@ -50,7 +50,7 @@ Python轻应用是一套端云结合、软硬结合的一站式解决方案，�
 
 ```python
 # -*- coding: UTF-8 -*-
-import iot
+from aliyunIoT import Device  # aliyunIoT组件是连接阿里云物联网平台的组件
 import utime
 from driver import GPIO
 import ujson

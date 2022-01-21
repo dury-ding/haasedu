@@ -67,7 +67,7 @@ IoT Studio产品的网站是[IoT Studio](https://www.aliyun.com/ss/?k=iotstudio)
 下图是一个物联网应用开发的标准步骤，其中“业务逻辑开发”和“模拟设备调试”两个步骤是否需要则视自己的业务需求而定。
 
 <div align="center">
-<img src=./../../图片/1_物联网应用开发的一般流程.png width=80%/>
+<img src=./../../图片/1_物联网应用开发的一般流程.png width=25%/>
 </div>
 
 <br>
