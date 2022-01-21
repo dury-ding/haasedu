@@ -20,16 +20,23 @@
 ## 创建解决方案
 
 &emsp;&emsp;
-如下图所示，打开VS Code之后在新建一个基于helloworld的python案例，硬件类型选择HaaS EDU K1，设定好工程名称（humiture）及工作区路径之后，点击立即创建，创建一个Python轻应用的解决方案。
+点击下图中的"快速开始"按键(<img src=./../../图片/1_HaaS_Studio_创建工程按钮.png width=8%/>)会弹出HaaS Studio的欢迎页面，请点击“创建项目”按钮。
+
+&emsp;&emsp;
+在随后弹框中，设定好项目名称（“humiture”）及工作区路径之后，硬件类型选择HaaS EDU K1，点击“立即创建”，创建一个Python轻应用的解决方案。
 
 <div align="center">
-<img src=./../../图片/1_创建Humiture工程.png
+<img src=./../../图片/1_创建Humiture工程_HaaS_EDU_K1.png
  width=40%/>
 </div>
 
 &emsp;&emsp;
-将[main.py](./代码/HaaS_EDU_K1/Python/main.py)脚本的代码复制后覆盖main.py里边的内容。
+将[温湿度数据上云](./代码/HaaS_EDU_K1/Python/)目录中的所有文件复制后覆盖humiture工程目录下的原有文件。其中main.py脚本的内容如下图所示：
 > Python脚本的详细说明请参考脚本内嵌的文字注释
+<div align="center">
+<img src=./../../图片/1_Humiture工程内容_HaaS_EDU_K1.png
+ width=100%/>
+</div>
 
 ## 代码编辑
 &emsp;&emsp;
@@ -51,34 +58,45 @@ wifiPassword = "请填写您的路由器密码"
 2. **修改设备端三元组**
 
 &emsp;&emsp;
-修改humiture工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
+修改humiture工程里main.py中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息。
 
-<div align="center">
-<img src=./../../图片/1_修改设备端三元组信息.png
- width=40%/>
-</div>
-
+```python
+# 三元组信息
+productKey = "产品密钥"
+deviceName = "设备名称"
+deviceSecret = "设备密钥"
+```
 
 3. **修改设备端上报温湿度信息所用标识符**
 
+&emsp;&emsp;
 humiture工程里main.py中下面的代码实现的是上传温湿度值到云端的功能。其中CurrentTemperature和CurrentHumidity便是温湿度值上报时所用的标识符。
 ```python
+# 上传温度信息和湿度信息到物联网平台
+def upload_temperature_and_Humidity():
+    global device
+
+    while True:
+        data = get_temp_humi()                      # 读取温度信息和湿度信息
+
         # 生成上报到物联网平台的属性值字串
         prop = ujson.dumps({
-            'CurrentTemperature': data[0],
-            'CurrentHumidity': data[1]
+            'CurrentTemperature': round(data[0], 1),
+            'CurrentHumidity': round(data[1])
             })
         print('uploading data: ', prop)
-
+        
         upload_data = {'params': prop}
         # 上传温度和湿度信息到物联网平台
         device.postProps(upload_data)
-        time.sleep(2)
+        utime.sleep(2)
 ```
+
+&emsp;&emsp;
 确保这两个标识符和物联网产品的物模型中属性标识符是一样的，如下图所示：
 <div align="center">
-<img src=./../../图片/1_HaaS_EDU_K1_humiture_属性标识符修改.png
- width=40%/>
+<img src=./../../图片/1_humiture_属性标识符修改.png
+ width=80%/>
 </div>
 
 ## 推送脚本到HaaS EDU K1并运行
@@ -90,17 +108,18 @@ humiture工程里main.py中下面的代码实现的是上传温湿度值到云�
 推送此脚本到HaaS EDU K1之后，串口会周期性的打印如下日志：
 ```log
 ...
-The temperature is: 50.4
-The humidity is: 14.0
+Wi-Fi connected
 ...
-The temperature is: 50.5
-The humidity is: 14.0
-...
-The temperature is: xxx
-The humidity is: yyy
+DeviceIP:172.20.10.10
+
+success to establish tcp, fd=54
+物联网平台连接成功
+sleep for 2s
+uploading data:  {"CurrentTemperature": 25.14527, "CurrentHumidity": 31.44579}
+uploading data:  {"CurrentTemperature": 25.13192, "CurrentHumidity": 31.40459}
 ...
 ```
 
 &emsp;&emsp;
-其中xxx是温湿度传感器实际测量到的温度值，yyy是温湿度传感器实际测量到的湿度值。
+其中"CurrentTemperature"后面是温湿度传感器实际测量到的温度值，"CurrentHumidity"是温湿度传感器实际测量到的湿度值。
 > 此温度值为开发板的温度值，所以和体感温度会有一定的差别

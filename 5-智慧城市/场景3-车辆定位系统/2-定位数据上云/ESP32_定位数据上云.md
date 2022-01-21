@@ -83,7 +83,7 @@ wifi_connected: False
 wifi_connected: False
 ('192.168.0.105', '255.255.255.0', '192.168.0.1', '192.168.0.1')
 sleep for 1 s
-establish tcp connection with server(host='a1zxKgAV78Z.iot-as-mqtt.cn-shanghai.aliyuncs.com', port=[443])
+...
 tcp_connect: can only connect from state CLOSED
 success to establish tcp, fd=54
 物联网平台连接成功

@@ -20,7 +20,7 @@
 
 &emsp;&emsp;
 接下来需要完成以下三处代码修改。
-1. **修改设备端三元组**
+2. **修改设备端三元组**
 
 &emsp;&emsp;
 修改gas_detector工程里app.js中productKey、deviceName和deviceSecret的值为读者创建的物联网设备的三元组信息，如下图所示：
@@ -31,7 +31,7 @@
 </div>
 
 
-1. **修改设备端上报数据所用标识符**
+3. **修改设备端上报数据所用标识符**
 
 gas_detector工程里app.js中下面的代码实现的是上传燃气检测结果和报警灯状态到云端的功能。其中gasVoltate便是燃气检测结果上报云端所用的标识符。
 ```python

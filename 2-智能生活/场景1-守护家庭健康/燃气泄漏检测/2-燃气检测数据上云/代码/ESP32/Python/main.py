@@ -7,7 +7,7 @@
 @version    :    1.0
 '''
 
-from aliyunIoT import Device  # iot组件是连接阿里云物联网平台的组件
+from aliyunIoT import Device  # aliyunIoT组件是连接阿里云物联网平台的组件
 import network                # Wi-Fi功能所在库
 import utime                   # 延时API所在组件
 import ujson                  # json字串解析库
@@ -171,7 +171,7 @@ if __name__ == '__main__':
 
     # 初始化红色LED所连接GPIO
     alarmLed = GPIO()
-    alarmLed.open('led_r')       # 加湿器使用board.json中led_r节点定义的GPIO，对应红色LED灯
+    alarmLed.open('led')          # LED报警灯使用board.json中名为led的节点中定义的GPIO进行控制
     led_control(alarmOn)          # 关闭报警灯
 
     # 请替换物联网平台申请到的产品和设备信息,可以参考文章:https://blog.csdn.net/HaaSTech/article/details/114360517

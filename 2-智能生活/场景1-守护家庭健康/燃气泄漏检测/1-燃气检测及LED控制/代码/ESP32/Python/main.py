@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     # 初始化红色LED所连接GPIO
     alarmLed = GPIO()
-    alarmLed.open('led_r')     # 加湿器使用board.json中led_r节点定义的GPIO，对应红色LED
+    alarmLed.open('led')        # LED报警灯使用board.json中名为led的节点中定义的GPIO进行控制
 
     # 初始化 GPIO
     while True:
