@@ -12,7 +12,7 @@
 &emsp;&emsp;
 修改hcho_detector工程里main.py中wifiSsid和wifiPassword的值为读者实际要连接的路由器的名称及密码（请注意名称和密码都需要放在""符号中间）。
 
-```
+```python
 # Wi-Fi SSID和Password设置
 wifiSsid = "请填写您的路由器名称"
 wifiPassword = "请填写您的路由器密码"

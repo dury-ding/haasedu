@@ -254,7 +254,7 @@ The humidity is 60%H
 </br>
 
 * 初始化传感器并开始进行温湿度测量
-```
+```python
     清除状态寄存器（发送CMD_CLEAR_STATUS）
     等待20ms
     发送周期性测量指令（CMD_MEAS_POLLING_H、CMD_MEAS_POLLING_M或CMD_MEAS_POLLING_L）
@@ -262,7 +262,7 @@ The humidity is 60%H
 ```
 
 * 读取温湿度测量结果
-```
+```python
     发起I2C读取数据（6个字节）的操作
     将读取到的测量结果转换成实际温室度值
 ```
@@ -276,7 +276,7 @@ The humidity is 60%H
 相对湿度值 = -45.0 + ((data[3]<<8) | data[4]) * 175.0 / (0xFFFF - 1)
 
 * 停止测量
-```
+```python
     发送停止周期性测量指令字（CMD_BREAK）
 ```
 
