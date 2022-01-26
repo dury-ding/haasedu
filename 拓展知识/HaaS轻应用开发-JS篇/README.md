@@ -532,8 +532,8 @@ var message = {
 
 &emsp;&emsp;
 对于原始类型来说，除了null都可以用typeof显示正确的类型。
-```
-ypeof 1 // 'number' 
+```js
+typeof 1 // 'number' 
 typeof '1' // 'string' 
 typeof undefined // 'undefined' 
 typeof true // 'boolean' 
@@ -542,8 +542,8 @@ typeof Symbol() // 'symbol'
 
 &emsp;&emsp;
 typeof对于对象来说，除了函数，都会显示object。
-```
-ypeof [] // 'object'
+```js
+typeof [] // 'object'
 typeof {} // 'object' 
 typeof console.log // 'function'
 ```

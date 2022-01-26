@@ -88,7 +88,7 @@ Python脚本推送到HaaS EDU K1之后 ，会自动运行，运行过程中日�
 * 火焰传感器没有检测到明火的时候，fireVoltage比较大，云端会下发开始报警的消息，脚本会打印“开始报警”，HaaS EDU K1的LED灯也会亮起
 * 火焰传感器检测到明火的时候，fireVoltage比较小，云端会下发结束报警的消息，脚本会打印“结束报警”，HaaS EDU K1的LED灯也会熄灭
 
-```
+```python
 ...
 Wi-Fi connected
 ...

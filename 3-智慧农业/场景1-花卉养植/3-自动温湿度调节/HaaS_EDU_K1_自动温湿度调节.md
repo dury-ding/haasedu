@@ -75,14 +75,14 @@ humiture工程里main.py中下面的代码实现的是上传温湿度值到云�
 &emsp;&emsp;
 下面是本节添加的重点代码段落讲解：
 * 新增两个变量用来控制空调和加湿器对应的GPIO
-```
+```python
 # 空调和加湿器状态变量
 airconditioner = 0
 humidifier = 0
 ```
 
 * 新增函数处理云端信息并控制GPIO的接口
-```
+```python
 # 设置props 事件接收函数（当云平台向设备下发属性时）
 def on_props(request):
     global airconditioner, humidifier
@@ -123,7 +123,7 @@ def on_props(request):
 
 * 注册接收到云端控制消息的回调函数
 
-```
+```python
 # 连接物联网平台
 def connect_lk(productKey, deviceName, deviceSecret):
 ...
@@ -146,7 +146,7 @@ def connect_lk(productKey, deviceName, deviceSecret):
 * 设备端解析到云端送下来的控制指令中包含“{"humidifier":1}”之后会打印"打开加湿器"并点亮绿色LED模拟打开控制加湿器的继电器的动作
 * 设备端解析到云端送下来的控制指令包含"{"airconditioner":1}"之后会打印"打开空调"并点亮蓝色LED模拟打开控制空调的继电器的动作
 
-```
+```python
 ...
 Wi-Fi connected
 ...

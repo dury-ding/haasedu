@@ -248,14 +248,14 @@ The humidity is 60%H
 </br>
 
 * 初始化传感器
-```
+```python
     发起I2C读取创阿奇状态（1个字节）的操作
     IF (not 传感器处于READY状态)
         复位传感器
 ```
 
 * 读取温湿度测量结果
-```
+```python
     发送读取温湿度测量结果指令([AHT21B_CMD_TRIGGER, 0x33, 0x00])
     while (传感器处于BUSY状态):
         等待5ms
@@ -271,7 +271,7 @@ The humidity is 60%H
 相对湿度值 = (((data[1] << 16) | (data[2] << 8) | data[3]) >> 4) * 100 /1024 / 1024
 
 * 停止测量
-```
+```python
     发送停止周期性测量指令（CMD_BREAK）
 ```
 
