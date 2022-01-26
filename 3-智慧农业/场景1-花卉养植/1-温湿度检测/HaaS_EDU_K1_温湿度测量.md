@@ -44,7 +44,7 @@
 
 &emsp;&emsp;
 推送此脚本到HaaS EDU K1之后，串口会周期性的打印如下日志。
-```
+```log
 ...
 The temperature is: 52.1
 The humidity is: 19.6

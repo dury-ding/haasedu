@@ -102,7 +102,7 @@ from driver import UART
 print("Testing gnss ...")
 
 uartDev = UART()
-uartDev.init("gnss")
+uartDev.open("gnss")
 
 gnssDev = gnss.Gnss(uartDev)
 ```

@@ -59,7 +59,7 @@
 * human status后面如果为0代表没有检测到人体活动
 * human status后面如果为1则代表检测到人体活动并打印“human is here .....”此时HaaS EDU K1上的红色LED等会亮起。
 
-```
+```log
 ...
              Welcome to AliOS Things           
 amp shakehand begin...
