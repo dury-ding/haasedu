@@ -52,7 +52,7 @@
 &emsp;&emsp;
 推送此脚本到ESP32之后，打印光敏电阻电压值，亮度越亮，电压值越低，如下所示：
 
-```
+```log
 mount fs
  ==== python file check /data/pyamp/main.py ====
  ==== main.py update time = 691104606 ====
