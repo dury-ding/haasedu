@@ -2,8 +2,8 @@
 
 > **学习物联网，来HaaSEDU就对了** 
 
-# 创建hellworld工程
-本节主要介绍如何通过HaaS-Studio IDE创建hellwoorld工程并完成程序下载。
+# 创建helloworld工程
+本节主要介绍如何通过HaaS-Studio IDE创建helloworld工程并完成程序下载。
 
 ## 硬件连线图
 本实验只需要一台HaaS600即可，无需外接其它设备。

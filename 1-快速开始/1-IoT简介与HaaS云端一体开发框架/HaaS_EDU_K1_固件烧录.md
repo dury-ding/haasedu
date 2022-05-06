@@ -13,26 +13,88 @@ HaaS EDU K1支持使用C/C++、Python和JavaScript语言进行开发。本节则
 ## 固件下载
 
 &emsp;&emsp;
-下载[HaaS EDU K1 V2.0官方固件](https://hli.aliyuncs.com/o/config/haas/haaseduk1.zip)并解压，解压完成后可以看到起目录结构如下：
+下载[HaaS EDU K1 v2.1.0官方固件](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-HaaSEDUK1-v2.1.0.zip)并解压，解压完成后可以看到起目录结构如下：
 
 ```bash
-.
-├── __init__.py             # 初始化脚本
-├── 20210615                # 固件版本信息，会随发布时间变化而变化
-├── flash_program_ll.py     # 固件烧录脚本
-├── flash_program.py        # 固件烧录脚本
-├── littlefs.bin            # 固件文件系统
-├── ota_rtos.bin            # 固件镜像文件
-└── ymodem.py               # 固件烧录ymodem脚本
+├── HaaSPython-HaaSEDUK1-{xxx}.bin   # HaaS Python官方固件，{xxx}为版本号
+└── littlefs.bin                     # 文件系统
 ```
 
 <br>
 
-## PC环境准备
+## HaaS EDU K1开发环境准备
 &emsp;&emsp;
 将HaaS EDU K1用TypeC数据线和电脑相连。
 
-### Windows系统
+### HaaS Studio安装
+&emsp;&emsp;
+HaaS Studio目前是以插件的形式安装在VS Code（Visual Studio Code）工具中，所以安装HaaS Studio之前需要先安装VS Code。
+
+#### 安装VS Code
+
+&emsp;&emsp;
+读者请到[微软官方网站](https://code.visualstudio.com/)上下载 VS Code 安装包并进行安装，VS Code安装包要求不低于版本 1.57。
+
+&emsp;&emsp;
+vscode有release版本(蓝色图标)和insider版本(绿色图标)，请安装蓝色图标的release版本。
+
+&emsp;&emsp;
+VS Code安装包下载网站： https://code.visualstudio.com/
+
+> 推荐 Windows 系统版本为 win10， MacOS 版本不低于 10.15。
+<br>
+
+#### 安装haas-studio插件
+
+> 安装完 VS Code之后，windows用户请注意使用管理员权限打开(vscode插件会安装相关工具到C盘，需要管理员权限)
+
+> 请勿修改vscode插件加载位置，需要使用默认位置
+
+&emsp;&emsp;
+安装完 VS Code之后，请按照下图中数字的指示步骤完成haas-studio插件的安装。
+
+<div align="center">
+<img src=../../图片/1_安装haas_studio_插件.png width=80%/>
+</div>
+
+&emsp;&emsp;
+插件第一次安装完成后，会提示安装相关工具才能激活插件，请同意安装相关工具。第一次新建或者打开python轻应用工程，也会安装轻应用开发相关工具，同样需要同意安装。
+
+<div align="center">
+<img src=../../图片/haas-studio-tool-install.png width=80%/>
+</div>
+
+&emsp;&emsp;
+插件安装完成后，则 VSCode 左下角的状态栏会显示"快速开始"的图标，如下图所示。
+
+<div align="center">
+<img src=../../图片/haas-studio-startup-page.png width=80%/>
+</div>
+
+&emsp;&emsp;
+一般情况下，左下角只会显示快速开始图标，如果打开或者新建了某个Python工程，则会在VSCode底部的状态栏展开如下一排按钮，这些按钮的功能如下图所示：
+
+<div align="center">
+<img src=../../图片/1_HaaS_Studio_Python工程按钮.png width=40%/>
+</div>
+
+&emsp;&emsp;
+为了方便开发，还可以打开高级串口模式，在当前的工程目录下，存在.vscode这样一个文件夹，找到里面的settings.json文件，将pythonAdvanced选项设置成enable即可，打开方式如下：
+* 注意高级模式某些平台可能不支持，比如低版本的linux，M1系列MACOS等，如果平台不支持，会自动设置成 disable。
+
+<div align="center">
+<img src=../../图片/haas-studio-python-advance.png width=80%/>
+</div>
+
+&emsp;&emsp;
+python高级模式打开之后，这些按钮的功能变成如下图所示：
+
+<div align="center">
+<img src=../../图片/haas-studio-python-advance-enable.png width=40%/>
+</div>
+
+### HaaS EDU K1串口名称确认
+#### Windows系统
 
 &emsp;&emsp;
 读者请通过控制面板下的设备管理器，查询当前电脑下HaaS EDU K1插入后新增的端口。下图中显示HaaS EDUK1连接后新增的串口为“COM7”。
@@ -45,125 +107,70 @@ HaaS EDU K1支持使用C/C++、Python和JavaScript语言进行开发。本节则
 
 <br>
 
-### MAC系统
+#### MAC系统
 
 &emsp;&emsp;
-MAC系统需要使用到的工具：Pyhton3，pyserial
-* 安装Python指令
-```bash
-brew install python3
+如果您的电脑是MAC系统，系统会自带HaaS EDU K1 UART驱动程序，无需单独安装。可以在命令行中通过如下命令查看HaaS EDU K1接到电脑之前和之后串口列表的差异确认HaaS EDU K1串口名称。
+
 ```
+# 接入HaaS EDU K1之前
+(base) ➜  ~ ls /dev/tty.usb*
+zsh: no matches found: /dev/tty.usb*
 
-
-&emsp;&emsp;
-安装完成后，执行"Python --version"命令，确认Python版本号为3.x.x，如下所示：
-
-```log
-Python 3.x.x
-```
-
-* 安装pyserial指令
-
-```bash
-pip3 install pyserial
+# 接入HaaS EDU K1之后
+(base) ➜  ~ ls /dev/tty.usb*
+/dev/tty.usbserial-1410
 ```
 
 &emsp;&emsp;
-安装完成后，执行"pyserial-ports"命令，确认可以查看到系统上面的所有串口信息，如下所示(请注意每台开发电脑的输出都是不同的)。
-```log
-/dev/cu.Bluetooth-Incoming-Port
-/dev/cu.CloudWalker-SPPDev-11
-/dev/cu.CloudWalker-SPPDev-13
-/dev/cu.usbserial-AU03OKKM
-4 ports found
-```
-
-
-&emsp;&emsp;
-其中"/dev/cu.usbserial-AU03OKKM"即为HaaS EDU K1所对应的串口。
+其中接入HaaS EDU K1之后新出现的"/dev/tty.usbserial-1410"即为HaaS EDU K1所对应的串口。
+> 注意：每台PC的串口可能都不一样，上面只是笔者电脑上面的串口信息。
 
 <br>
 
 ## 固件烧录过程
 
 &emsp;&emsp;
-在命令行中进入到固件解压后文件夹的根目录下面。
-
-### Windows系统
-
-&emsp;&emsp;
-假设固件解压后路径为"C:\haaseduk1"。Windows下打开命令行工具（建议使用PowerShell工具）后，依次执行如下指令：
-```bash
-cd C:\haaseduk1
-python.exe flash_program.py --bin=./ota_rtos.bin --bin=./littlefs.bin#0xB32000
-```
-
-&emsp;&emsp;
-接下来烧录脚本会提示让输入串口，此串口即为HaaS EDU K1和PC连接后设备管理器中新产生的串口。
-```bash
-binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
-
---- Available ports:
----  1: COM7                 'USB Serial Port (COM7)'
---- Enter port index or full name:
-```
-
-&emsp;&emsp;
-在“Enter port index or full name:”后输入目标串口ID，这里输入1后敲回车即可。
+烧录此固件需使用HaaS-Studio集成开发环境。
 
 <br>
+1. 点击“快速开始”按钮后选择“烧录工具”按钮。如下图所示。
+<div align="center">
+<img src=../../图片/1_HaaS_Studio_固件烧录.png width=75%/>
+</div>
+2. 选择好HaaS EDU K1对应的“串口名字” <br>
+3. 选择固件所在路径（上面“固件下载”步骤中解压出来的名为HaaSPython-HaaS-EDU-K1-{xxx}.bin的文件） <br>
+4. 选择文件系统所在路径（上面“固件下载”步骤中解压出来的名为lilttlefs.bin的文件） <br>
+5. 点击“开始烧录”按钮，HaaS Studio便会将此固件烧录到开发板中，如下图所示。 <br>
 
-### MAC系统
+> 下图中是笔者电脑中的串口好和固件名称，请读者按照根据串口和固件实际路径进行选择。
 
-&emsp;&emsp;
-假设固件解压后路径为"~/Downloads/haaseduk1"。
-```bash
-cd ~/Downloads/haaseduk1
-python flash_program.py --bin=./ota_rtos.bin --bin=./littlefs.bin#0xB32000
-```
+> 如果“串口名字”下拉框中没有正确的串口号，可以拔插HaaS EDU K1的USB口后，点击“刷新”按钮刷新串口列表。
 
-
-&emsp;&emsp;
-接下来烧录脚本会提示让输入串口，此串口即为HaaS EDU K1和PC连接后设备管理器中新产生的串口。
-```bash
-binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
-
---- Available ports:
----  1: /dev/cu.Bluetooth-Incoming-Port 'n/a'
----  2: /dev/cu.usbserial-AU03OKKM 'FT232R USB UART - FT232R USB UART'
---- Enter port index or full name:
-```
+<div align="center">
+<img src=../../图片/haas-studio-firmware-burn.png width=85%/>
+</div>
 
 &emsp;&emsp;
-在“Enter port index or full name:”后输入目标串口ID，这里输入2后敲回车即可。
+烧录过程中命令行窗口会输出如下日志，烧录完成，终端日志中会提示"Burn xxxx success."。
 
-
-&emsp;&emsp;
-选择好目标串口之后，当看到如下所示的提示后，则表明烧录过程开始：
-```bash
-(ash:/data)# reboot
-?H???
-
-CHIP_ID=haas1000
-KERNEL=
-OTA_CODE_OFFSET=0
-CRASH_DUMP_SIZE=0
-
-......
-
-Backup part addr:0x2a000
-Please input flash addr:
-0x2a000
-flash addr: 0x2a000
-
-Please start ymodem ... (press ctrl+c to cancel)
-
+```log
+...
 CCCC
 <<< 0x43
 Packet 0 >>>
 <<< 0x6
 <<< 0x43
-Packet 2720 / 2719.0 >>>  <<< ACK
+Packet 2656 / 2656 >>>  <<< ACK
+File: HaaSPython-HaaSEDUK1-v2.1.0.bin
+Size: 2718744Bytes
+...
+CCCC
+<<< 0x43
+Packet 0 >>>
+<<< 0x6
+<<< 0x43
+Packet 4792 / 4792 >>>  <<< ACK
 EOF
 >>> EOT
 <<< 0x15
@@ -171,11 +178,18 @@ EOF
 <<< 0x6
 <<< 0x43
 Packet End >>>
+<<< 0x6
+File: littlefs.bin
+Size: 4907008Bytes
+Swap AB partition
+...
+Burn "[('/Users/xxx/Downloads/HaaSPython-HaaSEDUK1/HaaSPython-HaaSEDUK1-v2.1.0.bin', '0'), ('/Users/xxx/Downloads/HaaSPython-HaaSEDUK1/littlefs.bin', '0xB32000')]" success.
 ```
 
+<br>
 
 &emsp;&emsp;
-如果在烧录的过程中会出现如下提示，请按下HaaS EDU K1上复位按钮(正面屏幕旁边的最小的按钮)重启设备。
+如果在烧录的过程中如果命令行中会出现如下提示，请按下HaaS EDU K1上复位按钮(正面屏幕旁边的最小的按钮)重启设备。
 
 ```log
 "Please reboot the board manually"
@@ -183,93 +197,26 @@ Packet End >>>
 
 <br>
 
-## 查看日志
+&emsp;&emsp;
+经过上面的步骤HaaS Python固件就烧录到HaaS EDU K1开发板中去了。
+
+### 固件版本确认
+&emsp;&emsp;
+固件烧录完成后，如何确认固件真的有更新到硬件中呢？可以通过如下的方法确认：
 
 &emsp;&emsp;
-烧录完成以后，可以通过串口工具连接设备进入命令行。请读者根据自己的习惯打开串口工具进行日志查看。如果读者没有使用过PC上的串口工具，也可以参考下面的工具说明。 
-
-### Windows系统
-
-&emsp;&emsp;
-Windows系统可以使用Putty工具，工具的设定请参考下图：
-
-![Windows系统串口工具截图](../../图片/1_Windows_系统串口工具.png)
-
-<br>
-
-### MAC系统
+通过串口工具打开HaaS EDU K1开发板串口（注意波特率选择1500000），此时在串口工具中敲击回车，会有三种情况：
+1. 敲击回车后会出现“>>>”符号，">>>"代表已经进入到Python的REPL模式中。
+2. 敲击回车后出现"#"符号，则代表HaaS EDU K1内部没有没有运行Python引擎，此时可以在串口中输入"python"然后敲击回车启动Python引擎；执行“python”之后再敲击回车，如果出现">>>"则代表python引擎启动成功，并且进入到了Python的REPL模式
+3. 敲击回车后未出现">>>"或“#”符号，则一般是因为您的开发板正在运行程序没办法接收串口命令。此时，可以同时按下Ctrl+C两个按键，尝试打断当前的python脚本。如果按很多次Ctrl+C之后仍然没有出现">>>"，则大概率是因为开发板运行的程序死机，可以尝试按住“Ctrl+C”再对开发板进行硬件复位，直到出现“#”或“>>>”。
 
 &emsp;&emsp;
-MacOS 推荐使用picocom串口工具。picocom安装命令如下。
-```bash
-brew install picocom
-```
+在REPL模式中输入“import uos; uos.version_info()”指令回车执行，HaaS Python则会将版本号信息输出到串口中。如下图所示，其版本信息遵循“HaaSPython-HaaSEDUK1-\<version>-\<buildtime>”的格式，其中：
+* \<version\>：代表HaaS Python版本号。
+* \<buildtime\>：代表固件编译时间。
 
+<div align="center">
+<img src=../../图片/HaaSPython_版本号确认_HaaS_EDU_K1.png width=50%/>
+</div>
 
-&emsp;&emsp;
-此工具只能通过命令行启动，启动命令如下：
-```bash
-picocom -b 1500000 /dev/cu.usbserial-AU03OKKM
-```
-
-
-&emsp;&emsp;
-在此工具页面下如果需要退出串口的时候请先按Ctrl+a，再按Ctrl+q。
-
-
-&emsp;&emsp;
-经过上面的步骤固件就烧录到HaaS EDU K1中去了。烧录成功后，串口信息会被记录到了烧录文件夹下的 .config_burn 文件中，内容如下：
-
-<br>
-
-### MAC系统
-```json
-  {
-    "chip_haas1000": {
-        "baudrate": "1500000",
-        "binfile": [
-            "./ota_rtos.bin",
-            "./littlefs.bin#0xB32000"
-        ],
-        "serialport": "/dev/cu.usbserial-AU03P0PA"
-    }
-  }
-```
-
-<br>
-
-### Windows系统
-```json
-{
-    "chip_haas1000": {
-        "baudrate": "1500000",
-        "binfile": [
-            "./ota_rtos.bin",
-            "./littlefs.bin#0xB32000"
-        ],
-        "serialport": "COM7"
-    }
-  }
-  ```
-
-&emsp;&emsp;
-serialport 字段为HaaS设备在当前电脑上的串口路径，不同设备会有差异。如果串口路径信息发生了改变， 需要手动修改 serialport 字段的值为 实际路径之后再进行烧录。
-
-&emsp;&emsp;
-如果在烧录的过程中出现如下错误，则表明设备的串口信息发生改变。可以按照第二步的操作，在终端输入 pyserial-ports 命令获取有效的串口信息并修改serialport 字段 即可。
-
-```bash
-python flash_program.py --bin=./ota_rtos.bin --bin=./littlefs.bin#0xB32000
-binary file is ['./ota_rtos.bin', './littlefs.bin#0xB32000']
-serial port is /dev/cu.xxxxxxxxxxxxx
-the settings were restored in the file /Users/xxxx/Downloads/haas100/.config_burn
-Traceback (most recent call last):
-  File "flash_program.py", line 228, in <module>
-    main()
-  File "flash_program.py", line 223, in main
-    burn_bin_files(myconfig["serialport"], myconfig['baudrate'], myconfig["binfile"])
-  File "flash_program.py", line 154, in burn_bin_files
-    raise Exception("Failed to open serial port: %s!" % portnum)
-Exception: Failed to open serial port: /dev/cu.xxxxxxxxxxxxx!
-
-```
+> MACOS建议使用picocom串口工具；Windows系统推荐使用Putty串口工具。

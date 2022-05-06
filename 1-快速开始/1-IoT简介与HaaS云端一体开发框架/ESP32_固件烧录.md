@@ -3,43 +3,109 @@
 # ESP32固件烧录
 
 &emsp;&emsp;
-ESP32是开源世界中被开发者普遍使用的开发板，在ESP32中同样可以使用Python语言基于HaaS开发框架进行轻应用开发。前提是ESP32设备中有烧录HaaS开发团队发布的ESP32的标准固件。本文则主要介绍怎样烧录包含HaaS开发框架的ESP32标准固件。
+ESP32是开源世界中被开发者普遍使用的开发板，在ESP32中同样可以使用Python语言基于HaaS开发框架进行轻应用开发。前提是ESP32设备中有烧录HaaS开发团队发布的ESP32标准固件。本文主要介绍怎样烧录包含HaaS开发框架的ESP32标准固件。
 <br>
 
 ## 固件下载
 
 &emsp;&emsp;
-下载[ESP32 HaaS官方固件](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-esp32-nodemcu32s.zip)并解压，解压完成后可以看到起目录结构如下：
-
+下载[ESP32 HaaS官方固件](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-ESP32-v2.1.0.zip)并解压，解压完成后可以看到起目录结构如下：
 ```
-├── HaaSPython-esp32-nodemcu32s-<xxx>.bin   # HaaS官方固件, <xxx>为版本号
-
+├── HaaSPython-ESP32-{xxx}.bin   # HaaS官方固件，{xxx}为版本号
 ```
 
 &emsp;&emsp;
 历史版本：
-* [ESP32-NodeMCU-V0.1.4](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-esp32-nodemcu32s-v0.1.4.zip)
-* [ESP32-NodeMCU-V0.1.2](https://hli.aliyuncs.com/o/config/HaaS_Python/HaaSPython-esp32-nodemcu32s-v0.1.2.zip)
-
+* [HaaSPython-ESP32-v2.0.0](https://hli.aliyuncs.com/o/config/HaaSPython/HaaSPython-ESP32-v2.0.0.zip)
+* [HaaSPython-ESP32-v1.0.2](https://hli.aliyuncs.com/p/config/HaaS_Python/HaaSPython-ESP32-v1.0.2.zip)
 <br>
 
-### PC环境准备
+## ESP32开发环境准备
 &emsp;&emsp;
 将ESP32用数据线和电脑USB口相连。
 
+### HaaS Studio安装
+&emsp;&emsp;
+HaaS Studio目前是以插件的形式安装在VS Code（Visual Studio Code）工具中，所以安装HaaS Studio之前需要先安装VS Code。
+
+#### 安装VS Code
+
+&emsp;&emsp;
+读者请到[微软官方网站](https://code.visualstudio.com/)上下载 VS Code 安装包并进行安装，VS Code安装包要求不低于版本 1.57。
+
+&emsp;&emsp;
+vscode有release版本(蓝色图标)和insider版本(绿色图标)，请安装蓝色图标的release版本。
+
+&emsp;&emsp;
+VS Code安装包下载网站： https://code.visualstudio.com/
+
+> 推荐 Windows 系统版本为 win10， MacOS 版本不低于 10.15。
+<br>
+
+#### 安装haas-studio插件
+
+> 安装完 VS Code之后，windows用户请注意使用管理员权限打开(vscode插件会安装相关工具到C盘，需要管理员权限)
+
+> 请勿修改vscode插件加载位置，需要使用默认位置
+
+&emsp;&emsp;
+安装完 VS Code之后，请按照下图中数字的指示步骤完成haas-studio插件的安装。
+
+<div align="center">
+<img src=../../图片/1_安装haas_studio_插件.png width=80%/>
+</div>
+
+&emsp;&emsp;
+插件第一次安装完成后，会提示安装相关工具才能激活插件，请同意安装相关工具。第一次新建或者打开python轻应用工程，也会安装轻应用开发相关工具，同样需要同意安装。
+
+<div align="center">
+<img src=../../图片/haas-studio-tool-install.png width=80%/>
+</div>
+
+&emsp;&emsp;
+插件安装完成后，则 VSCode 左下角的状态栏会显示"快速开始"的图标，如下图所示。
+
+<div align="center">
+<img src=../../图片/haas-studio-startup-page.png width=80%/>
+</div>
+
+&emsp;&emsp;
+一般情况下，左下角只会显示快速开始图标，如果打开或者新建了某个Python工程，则会在VSCode底部的状态栏展开如下一排按钮，这些按钮的功能如下图所示：
+
+<div align="center">
+<img src=../../图片/1_HaaS_Studio_Python工程按钮.png width=40%/>
+</div>
+
+&emsp;&emsp;
+为了方便开发，还可以打开高级串口模式，在当前的工程目录下，存在.vscode这样一个文件夹，找到里面的settings.json文件，将pythonAdvanced选项设置成enable即可，打开方式如下：
+* 注意高级模式某些平台可能不支持，比如低版本的linux，M1系列MACOS等，如果平台不支持，会自动设置成 disable。
+
+<div align="center">
+<img src=../../图片/haas-studio-python-advance.png width=80%/>
+</div>
+
+&emsp;&emsp;
+python高级模式打开之后，这些按钮的功能变成如下图所示：
+
+<div align="center">
+<img src=../../图片/haas-studio-python-advance-enable.png width=40%/>
+</div>
+
+### ESP32串口名称确认
 #### Windows系统
 
 &emsp;&emsp;
 如果您的电脑是Windows系统，请通过控制面板下的设备管理器，查询当前电脑下ESP32插入后新增的端口。下图中显示ESP32连接后新增的串口为“COM7”。
 > 注意：每台PC的串口可能都不一样，如果有多个串口，可以断开PC和ESP32之间的连线，然后将PC和ESP32相连，找到新增的那个串口。
 
-![ESP32串口示意图](../../图片/1_HaaS_EDU_K1_WINDOWS_COM.png)
+<div align="center">
+<img src=../../图片/1_HaaS_EDU_K1_WINDOWS_COM.png width=70%/>
+</div>
 
 &emsp;&emsp;
 如果电脑在连接ESP32之前和之后，没有新增串口，则需要安装ESP32的串口驱动。ESP32串口芯片有两种，请根据自己的ESP32型号选择合适的驱动（如果您不知道自己的ESP32型号，两个驱动都安装上即可）：
 * [CH340串口驱动下载页](http://www.wch.cn/downloads/CH341SER_ZIP.html)
-* [CP2102串口驱动下载](https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip)
-
+* [CP2102驱动下载](https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip)
 <br>
 
 #### MAC系统
@@ -47,7 +113,7 @@ ESP32是开源世界中被开发者普遍使用的开发板，在ESP32中同样�
 &emsp;&emsp;
 如果您的电脑是MAC系统，系统会自带ESP32 UART驱动程序，无需单独安装。可以在命令行中通过如下命令查看ESP32接到电脑之前和之后串口列表的差异确认ESP32串口名称。
 
-```bash
+```
 # 接入ESP32之前
 (base) ➜  ~ ls /dev/tty.usb*
 zsh: no matches found: /dev/tty.usb*
@@ -60,28 +126,30 @@ zsh: no matches found: /dev/tty.usb*
 &emsp;&emsp;
 其中接入ESP32之后新出现的"/dev/tty.usbserial-0001"即为ESP32所对应的串口。
 > 注意：每台PC的串口可能都不一样，上面只是笔者电脑上面的串口信息。
-
 <br>
 
 ### 固件烧录过程
 &emsp;&emsp;
-烧录此固件需使用HaaS-Studio集成开发环境，请先确保有按照[HaaS-Studio安装](./HaaS_Studio_开发环境.md)中的说明安装好HaaS-Studio集成开发环境。
+烧录此固件需使用HaaS-Studio集成开发环境。
 
-1. 点击“快速开始”（<img src=./../../图片/1_HaaS_Studio_快速开始.png width=10%/>）按钮后选择“烧录工具”按钮（<img src=./../../图片/1_HaaS_Studio_烧录工具.png width=10%/>）。如下图所示。
+1. 点击“快速开始”按钮后选择“烧录工具”按钮。如下图所示。
 <div align="center">
-<img src=./../../图片/1_HaaS_Studio_固件烧录.png width=100%/>
+<img src=../../图片/1_HaaS_Studio_固件烧录.png width=75%/>
 </div>
-2. 选择好ESP32对应的“串口名字”和固件所在路径之后点击“开始烧录”按钮，HaaS Studio便会将此固件烧录到开发板中，如下图所示。
+2. 选择好ESP32对应的“串口名字”和固件所在路径（上面“ESP32 HaaS固件下载”步骤中解压出来的名为HaaSPython-ESP32-{xxx}.bin的文件）之后点击“开始烧录”按钮，HaaS Studio便会将此固件烧录到开发板中，如下图所示。
+
 > 下图中是笔者电脑中的串口好和固件名称，请读者按照根据串口和固件实际路径进行选择。
+
 > 如果“串口名字”下拉框中没有正确的串口号，可以拔插ESP32的USB口后，点击“刷新”按钮刷新串口列表。
-> 如果读者想擦除整个固件可以将“是否擦除”复选框选中（建议第一次烧录选择此项）。
 
 <div align="center">
-<img src=./../../图片/1_HaaS_Studio_固件烧录_开始烧录.png width=100%/>
+<img src=../../图片/haas-studio-firmware-burn.png width=85%/>
 </div>
 
-烧录过程中命令行窗口会输出如下日志，烧录完成，中断日志中会提示"Hash of data verified."。
-```log
+&emsp;&emsp;
+烧录过程中命令行窗口会输出如下日志，烧录完成，终端日志中会提示"Hash of data verified."。
+
+```
 Serial port /dev/cu.usbserial-0001
 Connecting.......
 Detecting chip type... Unsupported detection protocol, switching and trying again...
@@ -114,6 +182,20 @@ Hard resetting via RTS pin...
 ```
 
 &emsp;&emsp;
-经过上面的步骤固件就烧录到ESP32中去了。
+经过上面的步骤HaaS Python ESP32固件就烧录到ESP32开发板中去了。
 
-<br>
+### 固件版本确认
+&emsp;&emsp;
+固件烧录完成后，如何确认固件真的有更新到硬件中呢？可以通过如下的方法确认：
+
+&emsp;&emsp;
+通过串口工具打开ESP32开发板串口（注意波特率选择115200），此时在串口工具中敲击回车会出现“>>>”符号，">>>"代表已经进入到Python的REPL模式中。在REPL模式中输入“import uos; uos.version_info()”指令回车执行，HaaS Python则会将版本号信息输出到串口中。如下图所示，其版本信息遵循“HaaSPython-ESP32-\<version>-\<buildtime>”的格式，其中：
+* \<version\>：代表HaaS Python版本号。
+* \<buildtime\>：代表固件编译时间。
+> MACOS建议使用picocom串口工具；Windows系统推荐使用Putty串口工具。
+
+<div align="center">
+<img src=../../图片/HaaSPython_版本号确认.png width=50%/>
+</div>
+
+> 打开串口工具后，敲回车后如果未出现">>>"符号，则一般是因为您的开发板正在运行Python脚本。此时，可以同时按下Ctrl+C两个按键，尝试打断当前的python脚本。如果按很多次Ctrl+C之后仍然没有出现">>>"，则大概率是因为开发板运行的程序死机，可以尝试按住“Ctrl+C”再对开发板进行硬件复位。

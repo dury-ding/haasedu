@@ -1,8 +1,8 @@
 > **学习物联网，来HaaSEDU就对了** 
 
-# 创建hellworld工程
+# 创建helloworld工程
 &emsp;&emsp;
-本节主要介绍如何通过HaaS-Studio IDE创建基于ESP32的hellwoorld工程并完成程序下载及运行。
+本节主要介绍如何通过HaaS-Studio IDE创建基于ESP32的helloworld工程并完成程序下载及运行。
 
 ## 硬件连线图
 &emsp;&emsp;
