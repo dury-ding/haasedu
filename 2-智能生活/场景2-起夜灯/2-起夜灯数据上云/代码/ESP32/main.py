@@ -35,6 +35,7 @@ def get_wifi_status():
     wlan.active(True)                  #激活界面
     wlan.scan()                        #扫描接入点
     #print("start to connect ", wifiSsid)
+    wlan.disconnect()
     wlan.connect(wifiSsid, wifiPassword)       # 连接到指定的路由器（路由器名称为wifiSsid, 密码为：wifiPassword）
 
     while True:
