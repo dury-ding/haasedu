@@ -106,7 +106,7 @@ HaaS Studio目前是基于Visual Studio Code的插件形式提供给开发者使
 
 ### 创建工程并下载脚本到开发板中并查看其运行效果
 &emsp;&emsp;
-创建hellworold工程并下载脚本到开发板的过程请参考下面的说明。
+创建helloworld工程并下载脚本到开发板的过程请参考下面的说明。
 * [HaaS EDU K1 helloworld](./HaaS_EDU_K1_helloworld.md)
 * [ESP32 helloworld](./ESP32_helloworld.md)
 * [HaaS600 helloworld](./HaaS600_helloworld.md)

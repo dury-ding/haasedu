@@ -55,7 +55,7 @@
 
 
 &emsp;&emsp;
-推送此脚本到HaaS EDU K1之后，当有人体在人体热释电红外传感器附近移动的适合，HaaS EDU K1的串口会周期性的打印如下日志，其中：
+推送此脚本到HaaS EDU K1之后，当有人体在人体热释电红外传感器附近移动的时候，HaaS EDU K1的串口会周期性的打印如下日志，其中：
 * human status后面如果为0代表没有检测到人体活动
 * human status后面如果为1则代表检测到人体活动并打印“human is here .....”此时HaaS EDU K1上的红色LED等会亮起。
 
